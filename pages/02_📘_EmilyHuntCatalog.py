@@ -30,6 +30,9 @@ cluster_name = st.sidebar.selectbox(
     "Select open cluster:",
     (list(list_clusters)))
 
+#aply filter
+clusters = clusters[clusters['name'] == cluster_name]
+
 ###############################################################################
 #load members
 members_ship = pd.read_parquet('data/parquet/members.parquet')
@@ -40,13 +43,12 @@ members_ship = members_ship[members_ship['name'] == cluster_name]
 # #aply fiter probability and mag
 # members_ship = members_ship[(members_ship['probability'] > 0.5)&(members_ship['phot_g_mean_mag'] <19.)]
 
-ind = [clusters['name'] == cluster_name]
 
-RA = clusters['ra'][ind]
-DEC = clusters['dec'][ind]
-age = (clusters['log_age_84'][ind]).iloc[0]
-dist = (clusters['distance_84'][ind]).iloc[0]
-Av = (clusters['a_v_84'][ind]).iloc[0]
+RA = clusters['ra']
+DEC = clusters['dec']
+age = clusters['log_age_84'].iloc[0]
+dist = clusters['distance_84'].iloc[0]
+Av = clusters['a_v_84'].iloc[0]
 
 
 # bar with fundamental parameters
