@@ -18,7 +18,7 @@ st.set_page_config(page_title="Emily Hunt Catalog",layout='wide', page_icon='ğŸ“
 
 ###############################################################################
 #load clusters
-clusters = pd.read_parquet(dir + r'\data\parquet\clusters.parquet')
+clusters = pd.read_parquet('data/parquet/clusters.parquet')
 
 #select only open clusters
 mask_oc = clusters['kind'] == 'o'
@@ -32,7 +32,7 @@ cluster_name = st.sidebar.selectbox(
 
 ###############################################################################
 #load members
-members_ship = pd.read_parquet(dir + r'\data\parquet\members.parquet')
+members_ship = pd.read_parquet('data/parquet/members.parquet')
 
 #aply filter name
 members_ship = members_ship[members_ship['name'] == cluster_name]
