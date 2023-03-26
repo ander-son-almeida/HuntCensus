@@ -31,7 +31,7 @@ cluster_our = np.genfromtxt('data/log-results-eDR3.txt', delimiter=';', names = 
                         dtype=None, encoding=None, autostrip=True)
 
 # Interface: Select cluster_ours name
-list_cluster_ours = cluster_our['cluster_our']
+list_cluster_ours = cluster_our['name']
 cluster_our_name = st.sidebar.selectbox(
     "Select open cluster_our:",
     (list(list_cluster_ours)))
