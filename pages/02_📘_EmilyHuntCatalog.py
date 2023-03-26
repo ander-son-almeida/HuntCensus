@@ -77,8 +77,6 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 
 ###############################################################################	   
 # RA x DEC 
-ind = np.argsort(members_ship['mass'])
-
 ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
                        'DEC': members_ship['dec']})
 
