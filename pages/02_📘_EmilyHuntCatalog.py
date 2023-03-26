@@ -43,9 +43,9 @@ members_ship = members_ship[members_ship['name'] == cluster_name]
 
 RA = clusters['ra']
 DEC = clusters['dec']
-age = clusters['log_age_84']
-dist = clusters['distance_84']
-Av = clusters['a_v_84']
+age = clusters['log_age_84'].iloc[0]
+dist = clusters['distance_84'].iloc[0]
+Av = clusters['a_v_84'].iloc[0]
 
 
 # bar with fundamental parameters
