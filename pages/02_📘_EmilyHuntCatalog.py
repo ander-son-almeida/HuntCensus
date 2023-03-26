@@ -50,9 +50,9 @@ Av = clusters['a_v_84']
 
 # bar with fundamental parameters
 st.sidebar.subheader("Fundamental parameters:")
-st.sidebar.subheader("$log(age) = {}$".format(age))
-st.sidebar.subheader("$Dist. = {}~(kpc)$".format(dist))
-st.sidebar.subheader("$Av. = {}~(mag)$".format(Av))
+st.sidebar.subheader("$log(age) = {}$".format(np.around(age,decimals=3)))
+st.sidebar.subheader("$Dist. = {}~(kpc)$".format(np.around(dist,decimals=3)))
+st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
 
 
 #Graphics
