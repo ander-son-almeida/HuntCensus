@@ -22,6 +22,9 @@ from scipy import stats
 from astropy.modeling import models
 # from numba import jit
 from scipy.optimize import curve_fit
+import requests
+from io import BytesIO
+
 
 def IMFR(initial_mass):
     Mf = np.zeros(initial_mass.size)
@@ -145,8 +148,16 @@ def load_mod_grid():
     global age_grid
     global z_grid
     
-    #data git
-    mod_grid = np.load('full_isoc_Gaia_eDR3_CMD34.npy')
+    # Especifica o link para o arquivo npy
+    url = 'https://github.com/ander-son-almeida/EmiliyHuntCensus/raw/main/full_isoc_Gaia_eDR3_CMD34.npy'
+    
+    # Faz a requisição do arquivo npy
+    response = requests.get(url)
+    
+    # Carrega o conteúdo do arquivo npy em uma matriz Numpy
+    mod_grid = np.load(BytesIO(response.content))
+    
+    # mod_grid = np.load('full_isoc_Gaia_eDR3_CMD34.npy')
             
     age_grid = np.unique(mod_grid['logAge'])
     z_grid = np.unique(mod_grid['Zini'])
