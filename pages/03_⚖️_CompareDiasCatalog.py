@@ -15,6 +15,8 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 from oc_tools_padova_edr3 import *
+import requests
+from io import BytesIO
 
 st.set_page_config(page_title="Compare Dias Catalog",layout='wide', page_icon='⚖️')
 
@@ -37,8 +39,13 @@ cluster_our_name = st.sidebar.selectbox(
     (list(list_cluster_ours)))
   
 # read memberships
-file = 'data/membership_data_edr3/{}_data_stars.dat'.format(cluster_our_name)
-members_ship = np.genfromtxt(file, delimiter=';', names=True, dtype=None)
+
+url = 'https://github.com/ander-son-almeida/EmiliyHuntCensus/blob/main/data/membership_data_edr3/{}_data_stars.dat'.format(cluster_our_name)
+
+response = requests.get(url)
+
+# file = 'data/membership_data_edr3/{}_data_stars.dat'.format(cluster_our_name)
+members_ship = np.genfromtxt(BytesIO(response.content), delimiter=';', names=True, dtype=None)
 
 # select fundamental parameters cluster_our	
 ind = np.where(cluster_our['cluster_our'] == cluster_our_name)
