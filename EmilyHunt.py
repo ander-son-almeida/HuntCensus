@@ -38,9 +38,9 @@ members = members[(members['probability'] > 0.5)&(members['phot_g_mean_mag'] <19
 
 ###############################################################################
 # Emily fundamental parameters
-age = clusters['log_age_84']
-dist = clusters['distance_84']/1000 #kpc
-Av = clusters['a_v_84']
+age = clusters['log_age_84'].iloc[0]
+dist = clusters['distance_84'].iloc[0]/1000 #kpc
+Av = clusters['a_v_84'].iloc[0]
 
 
 
