@@ -174,7 +174,7 @@ fig_parameters_our = make_subplots(rows=1, cols=3, subplot_titles=x)
 
 for i in range(3):
     fig_parameters_our.add_trace(go.Bar(x=[x1[i]], y=[y1[i]]), row=1, col=i+1)
-    fig_parameters_our.add_trace(go.Bar(x=[x1[i]], y=[y2[i]]), row=1, col=i+1)
+    fig_parameters_our.add_trace(go.Bar(x=[x1[i]+0.5], y=[y2[i]]), row=1, col=i+1)
     fig_parameters_our.update_yaxes(title_text='Our', row=1, col=i+1, range=[min(y1[i], y2[i]), max(y1[i], y2[i])])
     fig_parameters_our.update_yaxes(title_text='Emily', row=1, col=i+1, range=[min(y1[i], y2[i]), max(y1[i], y2[i])])
 
