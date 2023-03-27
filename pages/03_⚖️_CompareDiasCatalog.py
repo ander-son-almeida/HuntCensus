@@ -166,8 +166,6 @@ y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
 
 fig_parameters_our = go.Figure()
-
-fig_parameters_our = go.Figure()
 fig_parameters_our.add_trace(go.Bar(name='Our', x=x, y=y1))
 # fig_parameters.add_trace(go.Bar(name='Emily', x=x, y=y2))
 
