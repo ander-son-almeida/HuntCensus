@@ -66,15 +66,13 @@ e_FeH_our = cluster_our['e_FeH'][ind]
 Av_our = cluster_our['Av'][ind]
 e_Av_our = cluster_our['e_Av'][ind]
 
+st.sidebar.subheader("Our Fundamental parameters:")
+
 st.sidebar.subheader("Fundamental parameters:")
-
-
-# bar with fundamental parameters
-# st.sidebar.subheader("Fundamental parameters:")
-# st.sidebar.subheader("$log(age) = {} \pm {}$".format(age[0], e_age[0]))
-# st.sidebar.subheader("$Dist. = {} \pm {}~(kpc)$".format(dist[0],e_dist[0]))
-# st.sidebar.subheader("$Av. = {} \pm {}~(mag)$".format(Av[0],e_Av[0]))
-# st.sidebar.subheader("$FeH = {} \pm {}$".format(FeH[0],e_FeH[0]))
+st.sidebar.subheader("$log(age) = {} \pm {}$".format(age_our[0], e_age_our[0]))
+st.sidebar.subheader("$Dist. = {} \pm {}~(kpc)$".format(dist_our[0],e_dist_our[0]))
+st.sidebar.subheader("$Av. = {} \pm {}~(mag)$".format(Av_our[0],e_Av_our[0]))
+st.sidebar.subheader("$FeH = {} \pm {}$".format(FeH_our[0],e_FeH_our[0]))
 
 
 ###############################################################################
@@ -108,10 +106,10 @@ Av = clustersEmily['a_v_84'].iloc[0]
 
 
 # bar with fundamental parameters
-# st.sidebar.subheader("Fundamental parameters:")
-# st.sidebar.subheader("$log(age) = {}$".format(np.around(age,decimals=3)))
-# st.sidebar.subheader("$Dist. = {}~(kpc)$".format(np.around(dist,decimals=3)))
-# st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
+st.sidebar.subheader("Emily Fundamental parameters:")
+st.sidebar.subheader("$log(age) = {}$".format(np.around(age,decimals=3)))
+st.sidebar.subheader("$Dist. = {}~(kpc)$".format(np.around(dist,decimals=3)))
+st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
 
 
 
