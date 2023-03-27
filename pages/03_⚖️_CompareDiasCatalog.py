@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 
 
-st.set_page_config(page_title="Compare Dias Catalog",layout='wide', page_icon='⚖️')
+st.set_page_config(page_title="Compare Dias Catalog",layout='wide', page_icon='⚖️', theme="light")
 
 ###############################################################################
 # CATALOG DIAS
