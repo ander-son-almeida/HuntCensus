@@ -168,7 +168,7 @@ y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
 
 # criar subplots individuais
-fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3, figsize=(12, 6))
+fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3, figsize=(12, 10))
 
 # definir a largura das barras
 bar_width = 0.35
@@ -288,15 +288,15 @@ with container1:
         
         
 container2 = st.container()
-col4, col5 = st.columns(2)
+col4 = st.columns(1)
 
 with container2:
     with col4:
         st.subheader("Comparison of fundamental parameters")
         st.pyplot(fig_parameters_our)
         
-    with col5:
-        st.subheader("Primary")
+    # with col5:
+    #     st.subheader("Primary")
 
 #     st.header("Mass functions")
 #     with col4:
