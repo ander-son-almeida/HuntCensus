@@ -194,10 +194,7 @@ with container1:
         st.caption("Comparison of fundamental parameters")
         st.pyplot(fig_parameters_our)
 
-st.write('''
-We use the Padova PARSEC version 1.2S database of stellar evolutionary tracks and isochrones 
-(Bressan et al. 2012), which is scaled to solar metal content with 𝑍⊙ = 0.0152 to perform the adjustment. 
-''')
+
 
 
 

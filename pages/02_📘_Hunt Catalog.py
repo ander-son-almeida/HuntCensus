@@ -60,8 +60,17 @@ members_ship = members_ship[members_ship['name'] == cluster_name]
 RA = clusters['ra']
 DEC = clusters['dec']
 age = clusters['log_age_84'].iloc[0]
-dist = (clusters['distance_84']/1000).iloc[0]
+dist = clusters['distance_84'].iloc[0]/1000 #kpc
 Av = clusters['a_v_84'].iloc[0]
+n_stars = clusters['n_stars'].iloc[0]# Number members
+n_stars_tidal = clusters['n_stars_tidal'].iloc[0] # Number stars tidal radius
+radius_c_pc = clusters['radius_c_pc'].iloc[0] #Core radius
+radius_t_pc = clusters['radius_t_pc'].iloc[0] #Tidal radius
+radius_total_pc = clusters['radius_total_pc'].iloc[0] #Total radius
+parallax = clusters['parallax'].iloc[0] #parallax
+parallax_error = clusters['parallax_error'].iloc[0] # parallax_error
+radial_velocity = clusters['radial_velocity'].iloc[0] # radial_velocity
+radial_velocity_error = clusters['radial_velocity_error'].iloc[0] # radial_velocity_error
 
 
 # bar with fundamental parameters
@@ -69,6 +78,15 @@ st.sidebar.subheader("Fundamental parameters:")
 st.sidebar.subheader("$log(age) = {}$".format(np.around(age,decimals=3)))
 st.sidebar.subheader("$Dist. = {}~(kpc)$".format(np.around(dist,decimals=3)))
 st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
+st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
+st.sidebar.subheader("$N° members = {}$".format(n_stars))
+st.sidebar.subheader("$N° members tidal radius = {}$".format(n_stars_tidal))
+st.sidebar.subheader("$Core radius = {}~(pc)$".format(radius_c_pc))
+st.sidebar.subheader("$Tidal radius = {}~(pc)$".format(radius_t_pc))
+st.sidebar.subheader("$Total radius = {}~(pc)$".format(radius_total_pc))
+st.sidebar.subheader("$Parallax = {}\pm{}$".format(parallax, parallax_error))
+st.sidebar.subheader("$Radial velocity = {}\pm{}$".format(radial_velocity, radial_velocity_error))
+
 
 
 #Graphics
