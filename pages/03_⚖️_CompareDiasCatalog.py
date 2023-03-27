@@ -19,6 +19,7 @@ import requests
 from io import BytesIO
 from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 
 
 st.set_page_config(page_title="Compare Dias Catalog",layout='wide', page_icon='⚖️')
@@ -166,6 +167,8 @@ x = ['log(age)', 'Dist. (kpc)', 'Av.(mag)']
 x1 = [1,2,3]
 y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
+mpl.rc('font', family='Arial', size=16)
+
 
 # criar subplots individuais
 fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3, figsize=(12, 10))
