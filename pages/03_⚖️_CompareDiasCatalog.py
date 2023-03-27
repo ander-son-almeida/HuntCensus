@@ -121,6 +121,7 @@ cmd_emily_iso = px.line(cmd_iso_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag')
 fig_CMD_emily = go.Figure(data = cmd_scatter_emily.data + cmd_emily_iso.data).update_layout(coloraxis=cmd_scatter_emily.layout.coloraxis)
 fig_CMD_emily.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   yaxis_title="G (mag)",
+                  opacity = 0.8,
                   coloraxis_colorbar=dict(title="M☉"),
                   yaxis_range=[20,5])
 
