@@ -49,55 +49,58 @@ cluster_our = np.genfromtxt('data/log-results-eDR3.txt', delimiter=';', names = 
 
 # Interface: Select cluster_ours name
 list_cluster_ours = cluster_our['name']
-cluster_our_name = st.sidebar.selectbox(
-    "Select open cluster:",
-    (list(list_cluster_ours)))
-  
-file = 'data/membership_data_edr3/{}_data_stars.npy'.format(cluster_our_name)
-members_ship = np.load(file, allow_pickle=True)
+# cluster_our_name = st.sidebar.selectbox(
+#     "Select open cluster:",
+#     (list(list_cluster_ours)))
 
-# select fundamental parameters cluster_our	
-ind = np.where(cluster_our['name'] == cluster_our_name)
-
-RA_our = cluster_our['RA_ICRS'][ind]
-DEC_our = cluster_our['DE_ICRS'][ind]
-age_our = cluster_our['age'][ind]
-e_age_our = cluster_our['e_age'][ind]
-dist_our = (cluster_our['dist']/1000)[ind]
-e_dist_our = (cluster_our['e_dist']/1000)[ind]
-FeH_our = cluster_our['FeH'][ind]
-e_FeH_our = cluster_our['e_FeH'][ind]
-Av_our = cluster_our['Av'][ind]
-e_Av_our = cluster_our['e_Av'][ind]
-
-st.sidebar.subheader("Our Fundamental parameters:")
-st.sidebar.subheader("$log(age) = {} \pm {}$".format(age_our[0], e_age_our[0]))
-st.sidebar.subheader("$Dist. = {} \pm {}~(kpc)$".format(dist_our[0],e_dist_our[0]))
-st.sidebar.subheader("$Av. = {} \pm {}~(mag)$".format(Av_our[0],e_Av_our[0]))
-st.sidebar.subheader("$FeH = {} \pm {}$".format(FeH_our[0],e_FeH_our[0]))
-
-
-###############################################################################
-# CATALOG EMILY HUNT
-###############################################################################
-
-#load clusters
-clustersEmily = pd.read_parquet('data/parquet/clusters.parquet')
-
-#select only open clusters
-mask_oc = clustersEmily['kind'] == 'o'
-clustersEmily = clustersEmily[mask_oc]
-
-#aply filter
-clustersEmily = clustersEmily[clustersEmily['name'] == cluster_our_name]
-
-###############################################################################
-#load members
-members_ship_Emily = pd.read_parquet('data/parquet/members.parquet')
-
-if cluster_our_name not in list_cluster_ours:
+try:
+    cluster_our_name = st.sidebar.selectbox("Select open cluster:", list(list_cluster_ours))
+except ValueError:
     st.warning("{} is not a common cluster in both catalogs".format(cluster_our_name))
 else:
+  
+    file = 'data/membership_data_edr3/{}_data_stars.npy'.format(cluster_our_name)
+    members_ship = np.load(file, allow_pickle=True)
+    
+    # select fundamental parameters cluster_our	
+    ind = np.where(cluster_our['name'] == cluster_our_name)
+    
+    RA_our = cluster_our['RA_ICRS'][ind]
+    DEC_our = cluster_our['DE_ICRS'][ind]
+    age_our = cluster_our['age'][ind]
+    e_age_our = cluster_our['e_age'][ind]
+    dist_our = (cluster_our['dist']/1000)[ind]
+    e_dist_our = (cluster_our['e_dist']/1000)[ind]
+    FeH_our = cluster_our['FeH'][ind]
+    e_FeH_our = cluster_our['e_FeH'][ind]
+    Av_our = cluster_our['Av'][ind]
+    e_Av_our = cluster_our['e_Av'][ind]
+    
+    st.sidebar.subheader("Our Fundamental parameters:")
+    st.sidebar.subheader("$log(age) = {} \pm {}$".format(age_our[0], e_age_our[0]))
+    st.sidebar.subheader("$Dist. = {} \pm {}~(kpc)$".format(dist_our[0],e_dist_our[0]))
+    st.sidebar.subheader("$Av. = {} \pm {}~(mag)$".format(Av_our[0],e_Av_our[0]))
+    st.sidebar.subheader("$FeH = {} \pm {}$".format(FeH_our[0],e_FeH_our[0]))
+    
+    
+    ###############################################################################
+    # CATALOG EMILY HUNT
+    ###############################################################################
+    
+    #load clusters
+    clustersEmily = pd.read_parquet('data/parquet/clusters.parquet')
+    
+    #select only open clusters
+    mask_oc = clustersEmily['kind'] == 'o'
+    clustersEmily = clustersEmily[mask_oc]
+    
+    #aply filter
+    clustersEmily = clustersEmily[clustersEmily['name'] == cluster_our_name]
+    
+    ###############################################################################
+
+    #load members
+    members_ship_Emily = pd.read_parquet('data/parquet/members.parquet')
 
     #aply filter name
     members_ship_Emily = members_ship_Emily[members_ship_Emily['name'] == cluster_our_name]
