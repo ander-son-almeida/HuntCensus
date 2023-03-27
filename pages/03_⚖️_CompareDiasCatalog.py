@@ -279,30 +279,34 @@ fig_parameters_our.tight_layout()
 # plot_bin.update_layout(xaxis_title = 'log(M☉)', yaxis_title='ξ(log(M☉)')
 
 container1 = st.container()
-container2 = st.container()
-container3 = st.container()
-# col1, col2, col3  = st.columns(3)
-
-# with container1:
-#     with col1:
-#         st.subheader("CMD Emily")
-#         st.plotly_chart(fig_CMD_emily, use_container_width=True)
-
-#     with col2:
-#         st.subheader("CMD our")
-#         st.plotly_chart(fig_CMD_dias, use_container_width=True)
+# container2 = st.container()
+# container3 = st.container()
+col1, col2, col3  = st.columns(3)
 
 with container1:
-    st.subheader("CMD Emily")
-    st.plotly_chart(fig_CMD_emily, use_container_width=True)
+    with col1:
+        st.subheader("CMD Emily")
+        st.plotly_chart(fig_CMD_emily, use_container_width=True)
 
-with container2:
-    st.subheader("CMD our")
-    st.plotly_chart(fig_CMD_dias, use_container_width=True)
+    with col2:
+        st.subheader("CMD our")
+        st.plotly_chart(fig_CMD_dias, use_container_width=True)
         
-with container3:
-    st.subheader("Comparison of fundamental parameters")
-    st.pyplot(fig_parameters_our)
+    with col3:
+        st.subheader("Comparison of fundamental parameters")
+        st.pyplot(fig_parameters_our)
+
+# with container1:
+#     st.subheader("CMD Emily")
+#     st.plotly_chart(fig_CMD_emily, use_container_width=True)
+
+# with container2:
+#     st.subheader("CMD our")
+#     st.plotly_chart(fig_CMD_dias, use_container_width=True)
+        
+# with container3:
+#     st.subheader("Comparison of fundamental parameters")
+#     st.pyplot(fig_parameters_our)
         
         
 # container2 = st.container()
