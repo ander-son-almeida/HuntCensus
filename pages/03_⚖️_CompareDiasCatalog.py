@@ -116,7 +116,7 @@ cmd_iso_emily = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G
 
 cmd_scatter_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.5)
 
-cmd_emily_iso = px.line(cmd_iso_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag')
+cmd_emily_iso = px.line(cmd_iso_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', color='red')
 
 fig_CMD_emily = go.Figure(data = cmd_scatter_emily.data + cmd_emily_iso.data).update_layout(coloraxis=cmd_scatter_emily.layout.coloraxis)
 fig_CMD_emily.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
