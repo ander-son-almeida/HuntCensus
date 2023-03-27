@@ -169,15 +169,33 @@ y2 = [age, dist, Av]
 # fig_parameters_our = go.Figure()
 
 
-fig_parameters_our = make_subplots(rows=1, cols=3, subplot_titles=x)
+# fig_parameters_our = make_subplots(rows=1, cols=3, subplot_titles=x)
+
+# for i in range(3):
+#     fig_parameters_our.add_trace(go.Bar(x=[x[i]], y=[y1[i]], name='Our'), row=1, col=i+1)
+#     fig_parameters_our.add_trace(go.Bar(x=[x[i]], y=[y2[i]], name='Emily'), row=1, col=i+1)
+#     fig_parameters_our.update_yaxes(title_text='Our', row=1, col=i+1, range=[min(y1[i], y2[i]), max(y1[i], y2[i])])
+#     fig_parameters_our.update_yaxes(title_text='Emily', row=1, col=i+1, range=[min(y1[i], y2[i]), max(y1[i], y2[i])])
+
+# fig_parameters_our.update_layout(height=400, width=800, showlegend=False)
+
+fig_parameters_our = make_subplots(rows=1, cols=3)
 
 for i in range(3):
-    fig_parameters_our.add_trace(go.Bar(x=[x[i]], y=[y1[i]], name='Our'), row=1, col=i+1)
-    fig_parameters_our.add_trace(go.Bar(x=[x[i]], y=[y2[i]], name='Emily'), row=1, col=i+1)
-    fig_parameters_our.update_yaxes(title_text='Our', row=1, col=i+1, range=[min(y1[i], y2[i]), max(y1[i], y2[i])])
-    fig_parameters_our.update_yaxes(title_text='Emily', row=1, col=i+1, range=[min(y1[i], y2[i]), max(y1[i], y2[i])])
+    fig_parameters_our.add_trace(
+        go.Bar(x=x[i], y=[y1[i], y2[i]], name=['Our', 'Emily']),
+        row=1, col=i+1
+    )
 
-fig_parameters_our.update_layout(height=400, width=800, showlegend=False)
+fig_parameters_our.update_layout(
+    title='Comparação de valores',
+    xaxis_title='Valores',
+    yaxis_title='Escala',
+    height=400,
+    width=800,
+)
+
+fig_parameters_our.update_traces(opacity=0.5)
 
 
 
