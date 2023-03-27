@@ -85,7 +85,7 @@ st.sidebar.subheader("$Core~radius = {}~(pc)$".format(np.around(radius_c_pc,deci
 st.sidebar.subheader("$Tidal~radius = {}~(pc)$".format(np.around(radius_t_pc,decimals=3)))
 st.sidebar.subheader("$Total~radius = {}~(pc)$".format(np.around(radius_total_pc,decimals=3)))
 st.sidebar.subheader("$Parallax = {}\pm{}$".format(np.around(parallax,decimals=3), np.around(parallax_error,decimals=3)))
-st.sidebar.subheader("$Radial~velocity = {}\pm{}~km/s^-1$".format(np.around(radial_velocity,decimals=3), np.around(radial_velocity_error,decimals=3)))
+st.sidebar.subheader("$Radial~velocity = {}\pm{}~km/s^{{-1}}$".format(np.around(radial_velocity,decimals=3), np.around(radial_velocity_error,decimals=3)))
 
 
 
