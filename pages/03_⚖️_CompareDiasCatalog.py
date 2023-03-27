@@ -166,38 +166,18 @@ y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
 
 # fig_parameters_our = go.Figure(data=[go.Bar(x=x, y=y1)])
-fig_parameters_our = go.Figure()
+# fig_parameters_our = go.Figure()
 
-fig_parameters_our.add_trace(go.Bar(
-    y=x,
-    x=y1,
-    name='Our',
-    orientation='h',
-    marker=dict(
-        color='rgba(58, 71, 80, 0.6)',
-        line=dict(color='rgba(58, 71, 80, 1.0)', width=1)
+fig_parameters_our = make_subplots(rows=1, cols=3, shared_yaxes=True, subplot_titles=x)
+
+for i in range(3):
+    fig_parameters_our.add_trace(
+        go.Bar(x=[x[i], x[i]], y=[y1[i], y2[i]], name=['Our', 'Emily']),
+        row=1, col=i+1
     )
-))
 
-fig_parameters_our.add_trace(go.Bar(
-    y=x,
-    x=y2,
-    name='Emily',
-    orientation='h',
-    marker=dict(
-        color='rgba(246, 78, 139, 0.6)',
-        line=dict(color='rgba(246, 78, 139, 1.0)', width=1)
-    )
-))
+fig_parameters_our.update_layout(height=400, width=800, title_text="Comparing Our vs. Emily")
 
-fig_parameters_our.update_layout(
-    title='Comparação de idades, distâncias e extinções',
-    xaxis=dict(title='Valor', titlefont_size=16, tickfont_size=14),
-    yaxis=dict(title='Parâmetro', titlefont_size=16, tickfont_size=14),
-    legend=dict(x=0.85, y=0.05),
-    bargap=0.15,
-    bargroupgap=0.1
-)
 
 
 # ###############################################################################	
