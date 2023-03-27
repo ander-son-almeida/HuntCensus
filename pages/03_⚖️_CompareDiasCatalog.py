@@ -113,7 +113,6 @@ Av = clustersEmily['a_v_84'].iloc[0]
 #Graphics
 ###############################################################################
 # CMD Emily
-
 cor_obs_emily = members_ship_Emily['phot_bp_mean_mag']-members_ship_Emily['phot_rp_mean_mag']
 absMag_obs_emily = members_ship_Emily['phot_g_mean_mag']
 
@@ -127,10 +126,7 @@ fig_CMD_emily.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   coloraxis_colorbar=dict(title="M☉"),
                   yaxis_range=[20,5])
 
-
-
 #CMD Dias
-
 grid_iso = get_iso_from_grid(age,(10.**FeH_our)*0.0152,filters,refMag, nointerp=False)
 fit_iso = make_obs_iso(filters, grid_iso, dist, Av, gaia_ext = True) 
 cor_obs = members_ship['BPmag']-members_ship['RPmag']
@@ -163,35 +159,44 @@ fig_CMD_dias.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 #                         color_continuous_scale = 'jet_r')
 
 # ###############################################################################	
-# # Segregation Mass
-# Mc = 1.0
-# c1 = SkyCoord(ra=RA*u.degree, dec=DEC*u.degree, distance=dist*u.kpc) # open cluster_our center
-# c2 = SkyCoord(ra=members_ship['RA_ICRS']*u.degree, dec=members_ship['DE_ICRS']*u.degree, distance=dist*u.kpc) 
-# mass_members_ship = members_ship['mass'] + members_ship['comp_mass']
-# star_dist = np.array(c1.separation_3d(c2)*1000)
+x = ['log(age)', 'Dist. (kpc)', 'Av.(mag)']
+x1 = [1, 2, 3]
+y1 = [age_our, dist_our, Av_our]
+y2 = [age, dist, Av]
 
+fig_parameters = go.Figure()
 
-# seg1 = pd.DataFrame({'Mc < 1M☉': star_dist[mass_members_ship < Mc]})
-# seg2 = pd.DataFrame({'Mc > 1M☉': star_dist[mass_members_ship > Mc]})
+for i in range(3):
 
-# seg = pd.concat([seg1,seg2], axis=1)
-# seg = seg.fillna(0)
+    fig_parameters.add_trace(
+        go.Bar(
+            x=[f"x{i+1}"],
+            y=[y1[i]],
+            name="Our",
+            marker_color='orange',
+            opacity=0.5
+        )
+    )
 
-# hist, bin_edges = np.histogram(star_dist[mass_members_ship < Mc], density=True)
-# hist2, bin_edges2 = np.histogram(star_dist[mass_members_ship > Mc], density=True)
+    fig_parameters.add_trace(
+        go.Bar(
+            x=[f"x{i+1}"],
+            y=[y2[i]],
+            name="Emily",
+            marker_color='blue',
+            opacity=0.5,
+        )
+    )
 
-# xaxis_max = np.concatenate((bin_edges, bin_edges2), axis=0)
-# yaxis_max = np.concatenate((hist, hist2), axis=0)
-
-# seg = px.histogram(seg, histnorm='probability density', opacity=0.7)
-# seg.add_vline(x=np.average(star_dist[mass_members_ship < Mc]), line_dash = 'dash', line_color = 'blue')
-# seg.add_vline(x=np.average(star_dist[mass_members_ship > Mc]), line_dash = 'dash', line_color = 'red')
-
-# seg.update_layout(xaxis_title= 'Distance (pc)',
-#                   legend={'title_text':''},
-#                   yaxis_title='Count',
-#                   xaxis_range=[1,xaxis_max.max()],
-#                   yaxis_range=[0,yaxis_max.max()+0.02])
+fig_parameters.update_layout(
+    title="Gráfico de barras",
+    xaxis_title="Eixo X",
+    yaxis_title="Eixo Y",
+    xaxis_tickangle=-45,
+    bargap=0.2,
+    bargroupgap=0.1,
+    legend_title="Legendas",
+)
 
 
 # ###############################################################################	
@@ -289,7 +294,7 @@ with container1:
         st.plotly_chart(fig_CMD_emily, use_container_width=True)
 
     with col2:
-        st.subheader("CMD Dias")
+        st.subheader("CMD our")
         st.plotly_chart(fig_CMD_dias, use_container_width=True)
         
     # with col3:
@@ -297,10 +302,12 @@ with container1:
     #     st.plotly_chart(seg, use_container_width=True)
 
 
-# container2 = st.container()
-# col4, col5 = st.columns(2)
+container2 = st.container()
+col4 = st.columns(1)
 
-# with container2:
+with container2:
+        st.subheader("Comparison of fundamental parameters")
+        st.plotly_chart(fig_parameters, use_container_width=True)
     
 #     st.header("Mass functions")
 #     with col4:
