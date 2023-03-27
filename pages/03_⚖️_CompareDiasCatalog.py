@@ -44,8 +44,8 @@ cluster_our_name = st.sidebar.selectbox(
 
 # response = requests.get(url)
 
-file = 'data/membership_data_edr3/{}_data_stars.dat'.format(cluster_our_name)
-members_ship = np.genfromtxt(file, delimiter=';', names=True, dtype=None)
+file = 'data/membership_data_edr3/{}_data_stars.npy'.format(cluster_our_name)
+members_ship = np.load(file)
 
 # select fundamental parameters cluster_our	
 ind = np.where(cluster_our['cluster_our'] == cluster_our_name)
