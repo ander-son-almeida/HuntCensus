@@ -258,7 +258,6 @@ fig_parameters_our = go.Figure(data=[go.Bar(x=x, y=y1)])
 container1 = st.container()
 col1, col2  = st.columns(2)
 
-
 with container1:
     with col1:
         st.subheader("CMD Emily")
