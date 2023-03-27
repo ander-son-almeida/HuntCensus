@@ -162,6 +162,7 @@ fig_CMD_dias.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 # ###############################################################################	
 x = ['log(age)', 'Dist. (kpc)', 'Av.(mag)']
 x1 = [1, 2, 3]
+x1 = np.array(x1)
 y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
 
