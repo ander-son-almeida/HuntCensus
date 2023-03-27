@@ -279,7 +279,7 @@ col4 = st.columns(1)
 
 with container2:
         st.subheader("Comparison of fundamental parameters")
-        st.plotly_chart(fig_parameters, use_container_width=True)
+        st.plotly_chart(fig_parameters_our, use_container_width=True)
     
 #     st.header("Mass functions")
 #     with col4:
