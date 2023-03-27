@@ -187,18 +187,18 @@ clustersEmily = clustersEmily[a_ind]
 #dist
 scatter_dist = go.Scatter(x=cluster_our['dist'], y=clustersEmily['distance_84'])
 fig_dist = go.Figure(data=[scatter_dist])
-fig_dist.update_layout(aspectratio=dict(x=1, y=1))
+# fig_dist.update_layout(aspectratio=dict(x=1, y=1))
 
 
 #age
 scatter_age = go.Scatter(x=cluster_our['age'], y=clustersEmily['log_age_84'])
 fig_age = go.Figure(data=[scatter_age])
-fig_age.update_layout(aspectratio=dict(x=1, y=1))
+# fig_age.update_layout(aspectratio=dict(x=1, y=1))
 
 #av
 scatter_av = go.Scatter(x=cluster_our['Av'], y=clustersEmily['a_v_84'])
 fig_av = go.Figure(data=[scatter_av])
-fig_av.update_layout(aspectratio=dict(x=1, y=1))
+# fig_av.update_layout(aspectratio=dict(x=1, y=1))
 
 
 
