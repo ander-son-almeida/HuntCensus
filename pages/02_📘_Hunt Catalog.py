@@ -118,11 +118,11 @@ with container1:
     
     
     with col1:
-        st.subheader("CMD")
+        st.caption("CMD")
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        st.subheader("Distribution RA and DEC")
+        st.caption("Distribution RA and DEC")
         st.plotly_chart(fig_ra_dec, use_container_width=True)
         
 
