@@ -171,7 +171,7 @@ fig_parameters = go.Figure()
 fig_parameters.add_trace(go.Bar(name='Our', x=x, y=y1))
 fig_parameters.add_trace(go.Bar(name='Emily', x=x, y=y2))
 
-fig_parameters.update_layout(barmode='group', xaxis_title='Parâmetros', yaxis_title='Valores')
+# fig_parameters.update_layout(barmode='group', xaxis_title='Parâmetros', yaxis_title='Valores')
 
 # ###############################################################################	
 # # FM Single
