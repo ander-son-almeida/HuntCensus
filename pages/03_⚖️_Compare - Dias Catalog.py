@@ -178,7 +178,12 @@ fig_parameters_our.tight_layout()
 
 ###############################################################################	
 # clusters in common
+cluster_our = np.genfromtxt('data/log-results-eDR3.txt', delimiter=';', names = True, 
+                        dtype=None, encoding=None, autostrip=True)
+
+clustersEmily = pd.read_parquet('data/parquet/clusters.parquet')
 clustersEmily = clustersEmily.to_records()
+
 ab, a_ind, b_ind = np.intersect1d(cluster_our['name'],clustersEmily['name'], 
                                   return_indices=True)
 cluster_our = cluster_our[b_ind]
