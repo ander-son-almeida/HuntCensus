@@ -13,6 +13,8 @@ from scipy.optimize import curve_fit
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
+from oc_tools_padova_edr3 import *
+
 
 st.set_page_config(page_title="Emily Hunt Catalog",layout='wide', page_icon='📘')
 
@@ -72,18 +74,23 @@ st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
 #Graphics
 ###############################################################################
 # CMD 
+grid_iso = get_iso_from_grid(age,(10.**0)*0.0152,filters,refMag, nointerp=False)
+fit_iso = make_obs_iso(filters, grid_iso, dist, Av, gaia_ext = True) 
+
 cor_obs = members_ship['phot_bp_mean_mag']-members_ship['phot_rp_mean_mag']
 absMag_obs = members_ship['phot_g_mean_mag']
 
-
 cmd_scatter = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_obs})
 
+cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
+                        'Gmag': fit_iso['Gmag']})
 
 fig1 = px.scatter(cmd_scatter, x = 'G_BPmag - G_RPmag', y = 'Gmag',
-                  opacity=0.6)
+                  opacity=0.3)
 
+fig2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
 
-fig = go.Figure(data = fig1.data).update_layout(coloraxis=fig1.layout.coloraxis)
+fig = go.Figure(data = fig1.data + fig2.data).update_layout(coloraxis=fig1.layout.coloraxis)
 fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   yaxis_title="G (mag)",
                   coloraxis_colorbar=dict(title="M☉"),
