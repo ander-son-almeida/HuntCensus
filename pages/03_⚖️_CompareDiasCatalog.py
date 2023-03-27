@@ -42,7 +42,8 @@ cluster_our_name = st.sidebar.selectbox(
 # url = 'https://github.com/ander-son-almeida/EmiliyHuntCensus/blob/main/data/membership_data_edr3/{}_data_stars.dat'.format(cluster_our_name)
 # response = requests.get(url)
 
-file = 'membership_data_edr3/{}_data_stars.npy'.format(cluster_our_name)
+
+file = 'EmiliyHuntCensus/data//membership_data_edr3/{}_data_stars.npy'.format(cluster_our_name)
 members_ship = np.load(file, allow_pickle=True)
 
 # members_ship = np.load(BytesIO(response.content), allow_pickle=True)
