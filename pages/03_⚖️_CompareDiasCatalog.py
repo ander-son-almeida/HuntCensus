@@ -95,26 +95,25 @@ clustersEmily = clustersEmily[clustersEmily['name'] == cluster_our_name]
 #load members
 members_ship_Emily = pd.read_parquet('data/parquet/members.parquet')
 
-#aply filter name
-members_ship_Emily = members_ship_Emily[members_ship_Emily['name'] == cluster_our_name]
-
-RA = clustersEmily['ra']
-DEC = clustersEmily['dec']
-age = clustersEmily['log_age_84'].iloc[0]
-dist = (clustersEmily['distance_84']/1000).iloc[0]
-Av = clustersEmily['a_v_84'].iloc[0]
-
-# bar with fundamental parameters
-st.sidebar.subheader("Hunt Fundamental parameters:")
-st.sidebar.subheader("$log(age) = {}$".format(np.around(age,decimals=3)))
-st.sidebar.subheader("$Dist. = {}~(kpc)$".format(np.around(dist,decimals=3)))
-st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
-
-
 if cluster_our_name not in list_cluster_ours:
     st.warning("{} is not a common cluster in both catalogs".format(cluster_our_name))
 else:
 
+    #aply filter name
+    members_ship_Emily = members_ship_Emily[members_ship_Emily['name'] == cluster_our_name]
+    
+    RA = clustersEmily['ra']
+    DEC = clustersEmily['dec']
+    age = clustersEmily['log_age_84'].iloc[0]
+    dist = (clustersEmily['distance_84']/1000).iloc[0]
+    Av = clustersEmily['a_v_84'].iloc[0]
+    
+    # bar with fundamental parameters
+    st.sidebar.subheader("Hunt Fundamental parameters:")
+    st.sidebar.subheader("$log(age) = {}$".format(np.around(age,decimals=3)))
+    st.sidebar.subheader("$Dist. = {}~(kpc)$".format(np.around(dist,decimals=3)))
+    st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
+    
     #Graphics
     ###############################################################################
     # CMD Emily
