@@ -119,8 +119,7 @@ absMag_obs_emily = members_ship_Emily['phot_g_mean_mag']
 
 cmd_scatter_emily = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs_emily, 'Gmag': absMag_obs_emily})
 
-cmd_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag',
-                  opacity=0.6)
+cmd_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag')
 
 fig_CMD_emily = go.Figure(data = cmd_emily.data).update_layout(coloraxis=cmd_emily.layout.coloraxis)
 fig_CMD_emily.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
