@@ -114,7 +114,7 @@ cmd_scatter_emily = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs_emily, 'Gmag': ab
 cmd_iso_emily = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
                         'Gmag': fit_iso['Gmag']})
 
-cmd_scatter_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.5)
+cmd_scatter_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3)
 
 cmd_emily_iso = px.line(cmd_iso_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
 
@@ -135,9 +135,9 @@ cmd_scatter_dias = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_ob
 cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
                         'Gmag': fit_iso['Gmag']})
 
-CMD_scatter_dias = px.scatter(cmd_scatter_dias, x = 'G_BPmag - G_RPmag', y = 'Gmag')
+CMD_scatter_dias = px.scatter(cmd_scatter_dias, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3)
 
-CMD_iso_dias = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag')
+CMD_iso_dias = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
 
 fig_CMD_dias = go.Figure(data = CMD_scatter_dias.data + CMD_iso_dias.data).update_layout(coloraxis=CMD_scatter_dias.layout.coloraxis)
 fig_CMD_dias.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
