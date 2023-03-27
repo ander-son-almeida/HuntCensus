@@ -180,8 +180,8 @@ for i in range(3):
 
     pos = np.arange(len(x1)) + bar_width
     
-    axs[i].bar(x1[i], y1[i], bar_width, alpha=0.8)
-    axs[i].bar(x1[i]+ bar_width, y2[i], bar_width, alpha=0.8)
+    axs[i].bar(x1[i], y1[i], bar_width, alpha=0.5)
+    axs[i].bar(x1[i]+ bar_width, y2[i], bar_width, alpha=0.5)
     axs[i].set_xlabel(x[i])
     axs[i].set_xticks([])
     
