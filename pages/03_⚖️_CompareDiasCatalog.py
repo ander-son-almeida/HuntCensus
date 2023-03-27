@@ -183,7 +183,7 @@ fig_parameters_our = make_subplots(rows=1, cols=3)
 
 for i in range(3):
     fig_parameters_our.add_trace(
-        go.Bar(x=x[i], y=[y1[i], y2[i]]),
+        go.Bar(x=x1[i], y=[y1[i], y2[i]]),
         row=1, col=i+1
     )
 
