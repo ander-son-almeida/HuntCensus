@@ -171,7 +171,7 @@ mpl.rc('font', size=10)
 
 
 # criar subplots individuais
-fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3, figsize=(8, 6))
+fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3)
 
 # definir a largura das barras
 bar_width = 0.35
@@ -186,6 +186,7 @@ for i in range(3):
     axs[i].set_xticks([])
     
 fig_parameters_our.legend(['Our', 'Emily'])
+fig_parameters_our.tight_layout()
 
 
 
