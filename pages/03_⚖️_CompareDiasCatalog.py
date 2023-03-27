@@ -18,6 +18,8 @@ from oc_tools_padova_edr3 import *
 import requests
 from io import BytesIO
 from plotly.subplots import make_subplots
+import matplotlib.pyplot as plt
+
 
 st.set_page_config(page_title="Compare Dias Catalog",layout='wide', page_icon='⚖️')
 
@@ -161,24 +163,26 @@ fig_CMD_dias.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 
 # ###############################################################################	
 x = ['log(age)', 'Dist. (kpc)', 'Av.(mag)']
-x1 = [1, 2, 3]
-x1 = np.array(x1)
+x1 = [1,2,3]
 y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
 
-# fig_parameters_our = go.Figure(data=[go.Bar(x=x, y=y1)])
-# fig_parameters_our = go.Figure()
+# criar subplots individuais
+fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3, figsize=(10, 4))
 
-
-fig_parameters_our = make_subplots(rows=1, cols=3, subplot_titles=x)
+# definir a largura das barras
+bar_width = 0.35
 
 for i in range(3):
-    fig_parameters_our.add_trace(go.Bar(x=[x1[i]-0.5], y=[y1[i]]), row=1, col=i+1)
-    fig_parameters_our.add_trace(go.Bar(x=[x1[i]+0.5], y=[y2[i]]), row=1, col=i+1)
-    # fig_parameters_our.update_yaxes(title_text='Our', row=1, col=i+1, range=[min(y1[i], y2[i]), max(y1[i], y2[i])])
-    # fig_parameters_our.update_yaxes(title_text='Emily', row=1, col=i+1, range=[min(y1[i], y2[i]), max(y1[i], y2[i])])
 
-fig_parameters_our.update_layout(showlegend=False)
+    pos = np.arange(len(x1)) + bar_width
+    
+    axs[i].bar(x1[i], y1[i], bar_width, alpha=0.5)
+    axs[i].bar(x1[i]+ bar_width, y2[i], bar_width, alpha=0.5)
+    axs[i].set_xlabel(x[i])
+    axs[i].set_xticks([])
+    
+fig_parameters_our.legend(['Our', 'Emily'])
 
 
 
