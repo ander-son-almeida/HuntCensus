@@ -132,7 +132,7 @@ fig_CMD_emily.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 
 #CMD Dias
 
-grid_iso = get_iso_from_grid(age,(10.**FeH)*0.0152,filters,refMag, nointerp=False)
+grid_iso = get_iso_from_grid(age,(10.**FeH_our)*0.0152,filters,refMag, nointerp=False)
 fit_iso = make_obs_iso(filters, grid_iso, dist, Av, gaia_ext = True) 
 cor_obs = members_ship['BPmag']-members_ship['RPmag']
 absMag_obs = members_ship['Gmag']
