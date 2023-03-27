@@ -74,6 +74,11 @@ st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
 #Graphics
 ###############################################################################
 # CMD 
+# read isochrones
+mod_grid, age_grid, z_grid = load_mod_grid()
+filters = ['Gmag','G_BPmag','G_RPmag']
+refMag = 'Gmag' 
+
 grid_iso = get_iso_from_grid(age,(10.**0)*0.0152,filters,refMag, nointerp=False)
 fit_iso = make_obs_iso(filters, grid_iso, dist, Av, gaia_ext = True) 
 
