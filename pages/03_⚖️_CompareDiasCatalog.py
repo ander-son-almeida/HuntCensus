@@ -17,6 +17,7 @@ import plotly.graph_objects as go
 from oc_tools_padova_edr3 import *
 import requests
 from io import BytesIO
+from plotly.subplots import make_subplots
 
 st.set_page_config(page_title="Compare Dias Catalog",layout='wide', page_icon='⚖️')
 
