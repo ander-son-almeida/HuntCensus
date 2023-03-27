@@ -42,15 +42,8 @@ cluster_our_name = st.sidebar.selectbox(
     "Select open cluster:",
     (list(list_cluster_ours)))
   
-# read memberships
-# url = 'https://github.com/ander-son-almeida/EmiliyHuntCensus/blob/main/data/membership_data_edr3/{}_data_stars.dat'.format(cluster_our_name)
-# response = requests.get(url)
-
-
 file = 'data/membership_data_edr3/{}_data_stars.npy'.format(cluster_our_name)
 members_ship = np.load(file, allow_pickle=True)
-
-# members_ship = np.load(BytesIO(response.content), allow_pickle=True)
 
 # select fundamental parameters cluster_our	
 ind = np.where(cluster_our['name'] == cluster_our_name)
@@ -87,7 +80,6 @@ clustersEmily = clustersEmily[mask_oc]
 #aply filter
 clustersEmily = clustersEmily[clustersEmily['name'] == cluster_our_name]
 
-
 ###############################################################################
 #load members
 members_ship_Emily = pd.read_parquet('data/parquet/members.parquet')
@@ -95,21 +87,17 @@ members_ship_Emily = pd.read_parquet('data/parquet/members.parquet')
 #aply filter name
 members_ship_Emily = members_ship_Emily[members_ship_Emily['name'] == cluster_our_name]
 
-
 RA = clustersEmily['ra']
 DEC = clustersEmily['dec']
 age = clustersEmily['log_age_84'].iloc[0]
 dist = (clustersEmily['distance_84']/1000).iloc[0]
 Av = clustersEmily['a_v_84'].iloc[0]
 
-
 # bar with fundamental parameters
-st.sidebar.subheader("Emily Fundamental parameters:")
+st.sidebar.subheader("Hunt Fundamental parameters:")
 st.sidebar.subheader("$log(age) = {}$".format(np.around(age,decimals=3)))
 st.sidebar.subheader("$Dist. = {}~(kpc)$".format(np.around(dist,decimals=3)))
 st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
-
-
 
 
 #Graphics
@@ -157,18 +145,7 @@ fig_CMD_dias.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   coloraxis_colorbar=dict(title="M☉"),
                   yaxis_range=[20,5])
 
-# ###############################################################################	   
-# # RA x DEC 
-# # the mass is arranged according to the mass of the primary
-# ind = np.argsort(members_ship['mass'])
-
-# ra_dec = pd.DataFrame({'RA': members_ship['RA_ICRS'][ind], 
-#                         'DEC': members_ship['DE_ICRS'][ind], 'Mass': members_ship['mass'][ind]})
-
-# fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', color= 'Mass', 
-#                         color_continuous_scale = 'jet_r')
-
-# ###############################################################################	
+###############################################################################	
 x = ['log(age)', 'Dist. (kpc)', 'Av.(mag)']
 x1 = [1,2,3]
 y1 = [age_our, dist_our, Av_our]
@@ -199,7 +176,7 @@ col1, col2, col3  = st.columns(3)
 
 with container1:
     with col1:
-        st.caption("CMD Emily")
+        st.caption("CMD Hunt")
         st.plotly_chart(fig_CMD_emily, use_container_width=True)
 
     with col2:
