@@ -14,7 +14,18 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 
-st.set_page_config(page_title="Emily Hunt Catalog",layout='wide', page_icon='📘', theme="light")
+st.set_page_config(page_title="Emily Hunt Catalog",layout='wide', page_icon='📘')
+
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #fff;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 ###############################################################################
 #load clusters
