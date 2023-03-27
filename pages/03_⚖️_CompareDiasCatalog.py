@@ -167,7 +167,7 @@ x = ['log(age)', 'Dist. (kpc)', 'Av.(mag)']
 x1 = [1,2,3]
 y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
-mpl.rc('font', family='Arial', size=10)
+mpl.rc('font', size=10)
 
 
 # criar subplots individuais
