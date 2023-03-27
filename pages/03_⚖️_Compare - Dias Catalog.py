@@ -178,30 +178,29 @@ fig_parameters_our.tight_layout()
 
 ###############################################################################	
 # clusters in common
-cluster_our = np.genfromtxt('data/log-results-eDR3.txt', delimiter=';', names = True, 
+cluster01 = np.genfromtxt('data/log-results-eDR3.txt', delimiter=';', names = True, 
                         dtype=None, encoding=None, autostrip=True)
 
-clustersEmily = pd.read_parquet('data/parquet/clusters.parquet')
-clustersEmily = clustersEmily.to_records()
+cluster02 = pd.read_parquet('data/parquet/clusters.parquet')
+cluster02 = cluster02.to_records()
 
-ab, a_ind, b_ind = np.intersect1d(cluster_our['name'],clustersEmily['name'], 
+ab, a_ind, b_ind = np.intersect1d(cluster01['name'],cluster02['name'], 
                                   return_indices=True)
-cluster_our = cluster_our[b_ind]
-clustersEmily = clustersEmily[a_ind]
+cluster01 = cluster01[b_ind]
+cluster02 = cluster02[a_ind]
 
 #dist
-scatter_dist = go.Scatter(x=cluster_our['dist'], y=clustersEmily['distance_84'])
+scatter_dist = go.Scatter(x=cluster01['dist'], y=cluster02['distance_84'])
 fig_dist = go.Figure(data=[scatter_dist])
 # fig_dist.update_layout(aspectratio=dict(x=1, y=1))
 
-
 #age
-scatter_age = go.Scatter(x=cluster_our['age'], y=clustersEmily['log_age_84'])
+scatter_age = go.Scatter(x=cluster01['age'], y=cluster02['log_age_84'])
 fig_age = go.Figure(data=[scatter_age])
 # fig_age.update_layout(aspectratio=dict(x=1, y=1))
 
 #av
-scatter_av = go.Scatter(x=cluster_our['Av'], y=clustersEmily['a_v_84'])
+scatter_av = go.Scatter(x=cluster01['Av'], y=cluster02['a_v_84'])
 fig_av = go.Figure(data=[scatter_av])
 # fig_av.update_layout(aspectratio=dict(x=1, y=1))
 
