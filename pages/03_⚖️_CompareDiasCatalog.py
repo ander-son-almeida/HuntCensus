@@ -165,10 +165,40 @@ x1 = [1, 2, 3]
 y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
 
-fig_parameters_our = go.Figure(data=[go.Bar(x=x, y=y1)])
-# fig_parameters.add_trace(go.Bar(name='Emily', x=x, y=y2))
+# fig_parameters_our = go.Figure(data=[go.Bar(x=x, y=y1)])
+fig_parameters_our = go.Figure()
 
-# fig_parameters.update_layout(barmode='group', xaxis_title='Parâmetros', yaxis_title='Valores')
+fig_parameters_our.add_trace(go.Bar(
+    y=x,
+    x=y1,
+    name='Our',
+    orientation='h',
+    marker=dict(
+        color='rgba(58, 71, 80, 0.6)',
+        line=dict(color='rgba(58, 71, 80, 1.0)', width=1)
+    )
+))
+
+fig_parameters_our.add_trace(go.Bar(
+    y=x,
+    x=y2,
+    name='Emily',
+    orientation='h',
+    marker=dict(
+        color='rgba(246, 78, 139, 0.6)',
+        line=dict(color='rgba(246, 78, 139, 1.0)', width=1)
+    )
+))
+
+fig_parameters_our.update_layout(
+    title='Comparação de idades, distâncias e extinções',
+    xaxis=dict(title='Valor', titlefont_size=16, tickfont_size=14),
+    yaxis=dict(title='Parâmetro', titlefont_size=16, tickfont_size=14),
+    legend=dict(x=0.85, y=0.05),
+    bargap=0.15,
+    bargroupgap=0.1
+)
+
 
 # ###############################################################################	
 # # FM Single
@@ -267,11 +297,6 @@ with container1:
         st.subheader("CMD our")
         st.plotly_chart(fig_CMD_dias, use_container_width=True)
         
-    # with col3:
-    #     st.subheader("Comparison of fundamental parameters")
-    #     st.plotly_chart(fig_parameters_our, use_container_width=True)
-
-
 container2 = st.container()
 col4 = st.columns(1)
 
