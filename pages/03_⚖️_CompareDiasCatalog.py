@@ -171,10 +171,10 @@ fig_parameters = make_subplots(rows=1, cols=3, subplot_titles=x)
 
 for i in range(3):
 
-    fig_parameters.add_trace(go.Bar(x=[x1[i]], y=[y1[i]], name='Our', marker_color='orange', opacity=0.5),
+    fig_parameters.add_trace(go.Bar(x=[x1[i]], y=[y1[i]], name='Our', marker_color='orange'),
                   row=1, col=i+1)
     
-    fig_parameters.add_trace(go.Bar(x=[x1[i]], y=[y2[i]], name='Emily', marker_color='blue', opacity=0.5),
+    fig_parameters.add_trace(go.Bar(x=[x1[i]], y=[y2[i]], name='Emily', marker_color='blue'),
                   row=1, col=i+1)
     
     fig_parameters.update_xaxes(title_text=x[i], row=1, col=i+1, showticklabels=False)
