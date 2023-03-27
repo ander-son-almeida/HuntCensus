@@ -43,7 +43,7 @@ url = 'https://github.com/ander-son-almeida/EmiliyHuntCensus/blob/main/data/memb
 response = requests.get(url)
 
 # file = 'data/membership_data_edr3/{}_data_stars.npy'.format(cluster_our_name)
-members_ship = np.load(BytesIO(response.content), allow_pickle=False)
+members_ship = np.load(BytesIO(response.content), allow_pickle=True)
 
 # select fundamental parameters cluster_our	
 ind = np.where(cluster_our['cluster_our'] == cluster_our_name)
