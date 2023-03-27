@@ -142,10 +142,16 @@ cmd_scatter_dias = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_ob
 cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
                         'Gmag': fit_iso['Gmag']})
 
-fig_CMD_dias1 = px.scatter(cmd_scatter_dias, x = 'G_BPmag - G_RPmag', y = 'Gmag',
-                  opacity=0.6)
+fig_CMD_dias1 = px.scatter(cmd_scatter_dias, x = 'G_BPmag - G_RPmag', y = 'Gmag')
 
-fig_CMD_dias2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', line_color='red')
+fig_CMD_dias1.add_trace(go.Scatter(x=cmd_iso['G_BPmag - G_RPmag'], 
+                                   y=cmd_iso['Gmag'],
+                                   mode='lines', 
+                                   opacity=0.5, 
+                                   line=dict(color='red')))  
+
+
+fig_CMD_dias2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.6)
 
 fig_CMD_dias = go.Figure(data = fig_CMD_dias1.data + fig_CMD_dias2.data).update_layout(coloraxis=fig_CMD_dias1.layout.coloraxis)
 fig_CMD_dias.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
