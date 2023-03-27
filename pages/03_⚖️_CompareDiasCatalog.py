@@ -168,15 +168,16 @@ y2 = [age, dist, Av]
 # fig_parameters_our = go.Figure(data=[go.Bar(x=x, y=y1)])
 # fig_parameters_our = go.Figure()
 
-fig_parameters_our = make_subplots(rows=1, cols=3, shared_yaxes=True, subplot_titles=x)
+
+fig_parameters_our = make_subplots(rows=1, cols=3, subplot_titles=x)
 
 for i in range(3):
-    fig_parameters_our.add_trace(
-        go.Bar(x=[x[i], x[i]], y=[y1[i], y2[i]]),
-        row=1, col=i+1
-    )
+    fig_parameters_our.add_trace(go.Bar(x=[x[i]], y=[y1[i]], name='Our'), row=1, col=i+1)
+    fig_parameters_our.add_trace(go.Bar(x=[x[i]], y=[y2[i]], name='Emily'), row=1, col=i+1)
+    fig_parameters_our.update_yaxes(title_text='Our', row=1, col=i+1, range=[min(y1[i], y2[i]), max(y1[i], y2[i])])
+    fig_parameters_our.update_yaxes(title_text='Emily', row=1, col=i+1, range=[min(y1[i], y2[i]), max(y1[i], y2[i])])
 
-fig_parameters_our.update_layout(height=400, width=800, title_text="Comparing Our vs. Emily")
+fig_parameters_our.update_layout(height=400, width=800, showlegend=False)
 
 
 
