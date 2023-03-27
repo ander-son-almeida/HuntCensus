@@ -168,7 +168,7 @@ y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
 
 # criar subplots individuais
-fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3, figsize=(10, 4))
+fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3, figsize=(12, 6))
 
 # definir a largura das barras
 bar_width = 0.35
@@ -177,13 +177,13 @@ for i in range(3):
 
     pos = np.arange(len(x1)) + bar_width
     
-    axs[i].bar(x1[i], y1[i], bar_width, alpha=0.5)
-    axs[i].bar(x1[i]+ bar_width, y2[i], bar_width, alpha=0.5)
+    axs[i].bar(x1[i], y1[i], bar_width, alpha=0.8)
+    axs[i].bar(x1[i]+ bar_width, y2[i], bar_width, alpha=0.8)
     axs[i].set_xlabel(x[i])
     axs[i].set_xticks([])
     
 fig_parameters_our.legend(['Our', 'Emily'])
-fig_parameters_our.patch.set_facecolor('none') 
+
 
 
 
