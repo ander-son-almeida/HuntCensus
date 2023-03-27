@@ -80,12 +80,12 @@ st.sidebar.subheader("$Dist. = {}~(kpc)$".format(np.around(dist,decimals=3)))
 st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
 st.sidebar.subheader("$Av. = {}~(mag)$".format(np.around(Av,decimals=3)))
 st.sidebar.subheader("$N° members = {}$".format(n_stars))
-st.sidebar.subheader("$N° members tidal radius = {}$".format(n_stars_tidal))
-st.sidebar.subheader("$Core radius = {}~(pc)$".format(radius_c_pc))
-st.sidebar.subheader("$Tidal radius = {}~(pc)$".format(radius_t_pc))
-st.sidebar.subheader("$Total radius = {}~(pc)$".format(radius_total_pc))
-st.sidebar.subheader("$Parallax = {}\pm{}$".format(parallax, parallax_error))
-st.sidebar.subheader("$Radial velocity = {}\pm{}$".format(radial_velocity, radial_velocity_error))
+st.sidebar.subheader("$N° members~tidal~radius = {}$".format(n_stars_tidal))
+st.sidebar.subheader("$Core~radius = {}~(pc)$".format(np.around(radius_c_pc,decimals=3)))
+st.sidebar.subheader("$Tidal~radius = {}~(pc)$".format(np.around(radius_t_pc,decimals=3)))
+st.sidebar.subheader("$Total~radius = {}~(pc)$".format(np.around(radius_total_pc,decimals=3)))
+st.sidebar.subheader("$Parallax = {}\pm{}$".format(np.around(parallax,decimals=3), np.around(parallax_error,decimals=3)))
+st.sidebar.subheader("$Radial~velocity = {}\pm{}~km/s^-1$".format(np.around(radial_velocity,decimals=3), np.around(radial_velocity_error,decimals=3)))
 
 
 
