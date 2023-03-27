@@ -151,7 +151,7 @@ fig_CMD_dias1.add_trace(go.Scatter(x=cmd_iso['G_BPmag - G_RPmag'],
                                    line=dict(color='red')))  
 
 
-fig_CMD_dias2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.6)
+fig_CMD_dias2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag')
 
 fig_CMD_dias = go.Figure(data = fig_CMD_dias1.data + fig_CMD_dias2.data).update_layout(coloraxis=fig_CMD_dias1.layout.coloraxis)
 fig_CMD_dias.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
