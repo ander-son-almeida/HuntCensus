@@ -217,10 +217,10 @@ with container1:
         st.caption("Comparison of fundamental parameters")
         st.pyplot(fig_parameters_our)
 
-container1 = st.container()
+container2 = st.container()
 col4, col5, col6  = st.columns(3)
 
-with container1:
+with container2:
     with col1:
         st.caption("Distance catalog")
         st.plotly_chart(fig_dist, use_container_width=True)
