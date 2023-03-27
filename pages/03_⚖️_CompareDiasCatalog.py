@@ -191,15 +191,15 @@ col1, col2, col3  = st.columns(3)
 
 with container1:
     with col1:
-        st.subheader("CMD Emily")
+        st.caption("CMD Emily")
         st.plotly_chart(fig_CMD_emily, use_container_width=True)
 
     with col2:
-        st.subheader("CMD our")
+        st.caption("CMD our")
         st.plotly_chart(fig_CMD_dias, use_container_width=True)
         
     with col3:
-        st.subheader("Comparison of fundamental parameters")
+        st.caption("Comparison of fundamental parameters")
         st.pyplot(fig_parameters_our)
 
 
