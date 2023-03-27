@@ -286,7 +286,7 @@ fig_parameters_our.update_layout(
 # plot_bin.update_layout(xaxis_title = 'log(M☉)', yaxis_title='ξ(log(M☉)')
 
 container1 = st.container()
-col1, col2  = st.columns(2)
+col1, col2, col4  = st.columns(3)
 
 with container1:
     with col1:
@@ -297,13 +297,17 @@ with container1:
         st.subheader("CMD our")
         st.plotly_chart(fig_CMD_dias, use_container_width=True)
         
-container2 = st.container()
-col4 = st.columns(1)
-
-with container2:
     with col4:
         st.subheader("Comparison of fundamental parameters")
         st.plotly_chart(fig_parameters_our, use_container_width=True)
+        
+# container2 = st.container()
+# col4 = st.columns(1)
+
+# with container2:
+#     with col4:
+#         st.subheader("Comparison of fundamental parameters")
+#         st.plotly_chart(fig_parameters_our, use_container_width=True)
     
 #     st.header("Mass functions")
 #     with col4:
