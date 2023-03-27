@@ -171,7 +171,7 @@ mpl.rc('font', family='Arial', size=12)
 
 
 # criar subplots individuais
-fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3, figsize=(10, 4))
+fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3)
 
 # definir a largura das barras
 bar_width = 0.35
