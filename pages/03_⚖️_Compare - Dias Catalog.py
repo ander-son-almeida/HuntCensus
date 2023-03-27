@@ -185,7 +185,7 @@ cluster_our = cluster_our[b_ind]
 clustersEmily = clustersEmily[a_ind]
 
 #dist
-scatter_dist = go.Scatter(x=cluster_our['dist'], y=clustersEmily['dist'])
+scatter_dist = go.Scatter(x=cluster_our['dist'], y=clustersEmily['distance_84'])
 fig_dist = go.Figure(data=[scatter_dist])
 fig_dist.update_layout(aspectratio=dict(x=1, y=1))
 
