@@ -176,6 +176,29 @@ for i in range(3):
 fig_parameters_our.legend(['Our', 'Hunt'])
 fig_parameters_our.tight_layout()
 
+###############################################################################	
+# clusters in common
+ab, a_ind, b_ind = np.intersect1d(cluster_our['name'],clustersEmily['name'], 
+                                  return_indices=True)
+cluster_our = cluster_our[b_ind]
+clustersEmily = clustersEmily[a_ind]
+
+#dist
+scatter_dist = go.Scatter(x=cluster_our['dist'], y=clustersEmily['dist'])
+fig_dist = go.Figure(data=[scatter_dist])
+fig_dist.update_layout(aspectratio=dict(x=1, y=1))
+
+
+#age
+scatter_age = go.Scatter(x=cluster_our['age'], y=clustersEmily['log_age_84'])
+fig_age = go.Figure(data=[scatter_age])
+fig_age.update_layout(aspectratio=dict(x=1, y=1))
+
+#av
+scatter_av = go.Scatter(x=cluster_our['Av'], y=clustersEmily['a_v_84'])
+fig_av = go.Figure(data=[scatter_av])
+fig_av.update_layout(aspectratio=dict(x=1, y=1))
+
 
 
 container1 = st.container()
@@ -194,6 +217,21 @@ with container1:
         st.caption("Comparison of fundamental parameters")
         st.pyplot(fig_parameters_our)
 
+container1 = st.container()
+col4, col5, col6  = st.columns(3)
+
+with container1:
+    with col1:
+        st.caption("Distance catalog")
+        st.plotly_chart(fig_dist, use_container_width=True)
+
+    with col2:
+        st.caption("Age catalog")
+        st.plotly_chart(fig_age, use_container_width=True)
+        
+    with col3:
+        st.caption("Av catalog")
+        st.plotly_chart(fig_av, use_container_width=True)
 
 
 
