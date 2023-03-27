@@ -304,7 +304,7 @@ col4, col5 = st.columns(2)
 with container2:
     with col4:
         st.subheader("Comparison of fundamental parameters")
-        # st.plotly_chart(fig_parameters_our, use_container_width=True)
+        st.plotly_chart(fig_parameters_our, use_container_width=True)
         
     with col5:
         st.subheader("Primary")
