@@ -178,6 +178,7 @@ fig_parameters_our.tight_layout()
 
 ###############################################################################	
 # clusters in common
+clustersEmily = clustersEmily.to_records()
 ab, a_ind, b_ind = np.intersect1d(cluster_our['name'],clustersEmily['name'], 
                                   return_indices=True)
 cluster_our = cluster_our[b_ind]
