@@ -49,7 +49,7 @@ members_ship = np.load(file, allow_pickle=True)
 # members_ship = np.load(BytesIO(response.content), allow_pickle=True)
 
 # select fundamental parameters cluster_our	
-ind = np.where(cluster_our['cluster_our'] == cluster_our_name)
+ind = np.where(cluster_our['name'] == cluster_our_name)
 
 RA_our = cluster_our['RA_ICRS'][ind]
 DEC_our = cluster_our['DE_ICRS'][ind]
