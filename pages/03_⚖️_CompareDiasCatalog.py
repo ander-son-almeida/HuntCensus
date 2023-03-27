@@ -39,7 +39,7 @@ cluster_our = np.genfromtxt('data/log-results-eDR3.txt', delimiter=';', names = 
 # Interface: Select cluster_ours name
 list_cluster_ours = cluster_our['name']
 cluster_our_name = st.sidebar.selectbox(
-    "Select open cluster_our:",
+    "Select open cluster:",
     (list(list_cluster_ours)))
   
 # read memberships
@@ -65,6 +65,8 @@ FeH_our = cluster_our['FeH'][ind]
 e_FeH_our = cluster_our['e_FeH'][ind]
 Av_our = cluster_our['Av'][ind]
 e_Av_our = cluster_our['e_Av'][ind]
+
+st.sidebar.subheader("Fundamental parameters:")
 
 
 # bar with fundamental parameters
@@ -167,8 +169,6 @@ x = ['log(age)', 'Dist. (kpc)', 'Av.(mag)']
 x1 = [1,2,3]
 y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
-mpl.rc('font', size=10)
-
 
 # criar subplots individuais
 fig_parameters_our, axs = plt.subplots(nrows=1, ncols=3)
@@ -190,97 +190,7 @@ fig_parameters_our.tight_layout()
 
 
 
-
-
-
-# ###############################################################################	
-# # FM Single
-# ind_indv = members_ship['comp_mass'] == 0
-# mass =  members_ship['mass'][ind_indv]
-
-# (alpha_high_mass_sing, alpha_low_mass_sing, Mc_sing, offset_sing, alpha_high_mass_error_sing, \
-#     alpha_low_mass_error_sing, Mc_error_sing, offset_error_sing, mass_cnt, mass_cnt_er, 
-#     mass_bin_ctr, inv_mass, inv_mass_wd, popt) = fit_MF(mass, 'Sigle')
-
-# xplot = np.linspace(mass_bin_ctr.min(),mass_bin_ctr.max(),1000)
-
-# fm_ind = pd.DataFrame({'mass_bin_ctr': mass_bin_ctr, 'mass_cnt': mass_cnt, 'mass_cnt_er': mass_cnt_er})
-# fm_ind_adj = pd.DataFrame({'xplot': xplot, 'ajuste': twosided_IMF(xplot, *popt)})
-
-# plot_ind1 = px.scatter(fm_ind, x="mass_bin_ctr", y="mass_cnt", error_y="mass_cnt_er")
-# plot_ind2 = px.line(fm_ind_adj, x = 'xplot', y = 'ajuste', color_discrete_sequence = ['orange'])
-# plot_ind = go.Figure(data = plot_ind1.data + plot_ind2.data)
-
-# plot_ind.update_layout(xaxis_title = 'log(M☉)', yaxis_title='ξ(log(M☉)')
-
-# ###############################################################################	
-# # FM Primary
-
-# ind_bin = members_ship['comp_mass'] > 0
-# mass =  members_ship['mass'][ind_bin]
-
-# (alpha_high_mass_prim, alpha_low_mass_prim, Mc_prim, offset_prim, alpha_high_mass_error_prim, \
-#     alpha_low_mass_error_prim, Mc_error_prim, offset_error_prim, mass_cnt, mass_cnt_er, 
-#     mass_bin_ctr, inv_mass, inv_mass_wd, popt) = fit_MF(mass, 'Primary')
-
-# xplot = np.linspace(mass_bin_ctr.min(),mass_bin_ctr.max(),1000)
-
-# fm_prim = pd.DataFrame({'mass_bin_ctr': mass_bin_ctr, 'mass_cnt': mass_cnt, 'mass_cnt_er': mass_cnt_er})
-# fm_prim_adj = pd.DataFrame({'xplot': xplot, 'ajuste': twosided_IMF(xplot, *popt)})
-
-# plot_prim1 = px.scatter(fm_prim, x="mass_bin_ctr", y="mass_cnt", error_y="mass_cnt_er")
-# plot_prim2 = px.line(fm_prim_adj, x = 'xplot', y = 'ajuste', color_discrete_sequence = ['orange'])
-# plot_prim = go.Figure(data = plot_prim1.data + plot_prim2.data)
-
-# plot_prim.update_layout(xaxis_title = 'log(M☉)', yaxis_title='ξ(log(M☉)')
-
-# ###############################################################################	
-# # FM Secundary
-
-# ind_bin = members_ship['comp_mass'] > 0
-# mass =  members_ship['comp_mass'][ind_bin]
-
-# title = 'Secundárias \n 'r'$\alpha_A = {} \pm {}$; $\alpha_B = {} \pm {}$; $M_c = {} \pm {}$'
-
-# (alpha_high_mass_sec, alpha_low_mass_sec, Mc_sec, offset_sec, alpha_high_mass_error_sec, \
-#     alpha_low_mass_error_sec, Mc_error_sec, offset_error_sec, mass_cnt, mass_cnt_er, 
-#     mass_bin_ctr, inv_mass, inv_mass_wd, popt) = fit_MF(mass, 'Secundary')
-
-# xplot = np.linspace(mass_bin_ctr.min(),mass_bin_ctr.max(),1000)
-
-# fm_sec = pd.DataFrame({'mass_bin_ctr': mass_bin_ctr, 'mass_cnt': mass_cnt, 'mass_cnt_er': mass_cnt_er})
-# fm_sec_adj = pd.DataFrame({'xplot': xplot, 'ajuste': twosided_IMF(xplot, *popt)})
-
-# plot_sec1 = px.scatter(fm_sec, x="mass_bin_ctr", y="mass_cnt", error_y="mass_cnt_er")
-# plot_sec2 = px.line(fm_sec_adj, x = 'xplot', y = 'ajuste', color_discrete_sequence = ['orange'])
-# plot_sec = go.Figure(data = plot_sec1.data + plot_sec2.data)
-
-# plot_sec.update_layout(xaxis_title = 'log(M☉)', yaxis_title='ξ(log(M☉)')
-
-# ###############################################################################	
-# # FM Binary
-
-# ind_bin = members_ship['comp_mass'] > 0
-# mass =  np.concatenate((members_ship['mass'][ind_bin], members_ship['comp_mass'][ind_bin]), axis = 0)
-
-# (alpha_high_mass_bin, alpha_low_mass_bin, Mc_bin, offset_bin, alpha_high_mass_error_bin, \
-#     alpha_low_mass_error_bin, Mc_error_bin, offset_error_bin, mass_cnt, mass_cnt_er, 
-#     mass_bin_ctr, inv_mass, inv_mass_wd, popt) = fit_MF(mass, 'Binary')
-
-# xplot = np.linspace(mass_bin_ctr.min(),mass_bin_ctr.max(),1000)
-
-# fm_bin = pd.DataFrame({'mass_bin_ctr': mass_bin_ctr, 'mass_cnt': mass_cnt, 'mass_cnt_er': mass_cnt_er})
-# fm_bin_adj = pd.DataFrame({'xplot': xplot, 'ajuste': twosided_IMF(xplot, *popt)})
-
-# plot_bin1 = px.scatter(fm_bin, x="mass_bin_ctr", y="mass_cnt", error_y="mass_cnt_er")
-# plot_bin2 = px.line(fm_bin_adj, x = 'xplot', y = 'ajuste', color_discrete_sequence = ['orange'])
-# plot_bin = go.Figure(data = plot_bin1.data + plot_bin2.data)
-
-# plot_bin.update_layout(xaxis_title = 'log(M☉)', yaxis_title='ξ(log(M☉)')
-
 container1 = st.container()
-# container2 = st.container()
-# container3 = st.container()
 col1, col2, col3  = st.columns(3)
 
 with container1:
@@ -295,92 +205,6 @@ with container1:
     with col3:
         st.subheader("Comparison of fundamental parameters")
         st.pyplot(fig_parameters_our)
-
-# with container1:
-#     st.subheader("CMD Emily")
-#     st.plotly_chart(fig_CMD_emily, use_container_width=True)
-
-# with container2:
-#     st.subheader("CMD our")
-#     st.plotly_chart(fig_CMD_dias, use_container_width=True)
-        
-# with container3:
-#     st.subheader("Comparison of fundamental parameters")
-#     st.pyplot(fig_parameters_our)
-        
-        
-# container2 = st.container()
-# col4 = st.columns(1)
-
-# with container2:
-#     with col4:
-#         st.subheader("Comparison of fundamental parameters")
-#         st.pyplot(fig_parameters_our)
-        
-    # with col5:
-    #     st.subheader("Primary")
-
-#     st.header("Mass functions")
-#     with col4:
-#         st.subheader("Single")
-#         st.info('$\\alpha_{{A}}={}~\pm~{};~'
-#                 '\\alpha_{{B}}={}~\pm~{};~'
-#                 'M_{{C}}={}~\pm~{}$'.format(np.around(alpha_high_mass_sing,decimals=2), 
-#                                                 np.around(alpha_high_mass_error_sing,decimals=2),
-#                                                 np.around(alpha_low_mass_sing,decimals=2),
-#                                                 np.around(alpha_low_mass_error_sing,decimals=2),
-#                                                 np.around(Mc_sing,decimals=2),
-#                                                 np.around(Mc_error_sing,decimals=2)
-#                                                 ))
-#         st.plotly_chart(plot_ind, use_container_width=True)
-    
-#     with col5:
-#         st.subheader("Primary")
-#         st.info('$\\alpha_{{A}}={}~\pm~{};~'
-#                 '\\alpha_{{B}}={}~\pm~{};~'
-#                 'M_{{C}}={}~\pm~{}$'.format(np.around(alpha_high_mass_prim,decimals=2), 
-#                                                 np.around(alpha_high_mass_error_prim,decimals=2),
-#                                                 np.around(alpha_low_mass_prim,decimals=2),
-#                                                 np.around(alpha_low_mass_error_prim,decimals=2),
-#                                                 np.around(Mc_prim,decimals=2),
-#                                                 np.around(Mc_error_prim,decimals=2)
-#                                                 ))
-#         st.plotly_chart(plot_prim, use_container_width=True)
-
-# container3 = st.container()
-# col6, col7 = st.columns(2)
-
-# with container3:
-#     with col6:
-#         st.subheader("Secundary")
-#         st.info('$\\alpha_{{A}}={}~\pm~{};~'
-#                 '\\alpha_{{B}}={}~\pm~{};~'
-#                 'M_{{C}}={}~\pm~{}$'.format(np.around(alpha_high_mass_sec,decimals=2), 
-#                                                 np.around(alpha_high_mass_error_sec,decimals=2),
-#                                                 np.around(alpha_low_mass_sec,decimals=2),
-#                                                 np.around(alpha_low_mass_error_sec,decimals=2),
-#                                                 np.around(Mc_sec,decimals=2),
-#                                                 np.around(Mc_error_sec,decimals=2)
-#                                                 ))
-#         st.plotly_chart(plot_sec, use_container_width=True)
-
-#     with col7:
-#         st.subheader("Binary")
-#         st.info('$\\alpha_{{A}}={}~\pm~{};~'
-#                 '\\alpha_{{B}}={}~\pm~{};~'
-#                 'M_{{C}}={}~\pm~{}$'.format(np.around(alpha_high_mass_bin,decimals=2), 
-#                                                 np.around(alpha_high_mass_error_bin,decimals=2),
-#                                                 np.around(alpha_low_mass_bin,decimals=2),
-#                                                 np.around(alpha_low_mass_error_bin,decimals=2),
-#                                                 np.around(Mc_bin,decimals=2),
-#                                                 np.around(Mc_error_bin,decimals=2)
-#                                                 ))
-#         st.plotly_chart(plot_bin, use_container_width=True)
-
-
-
-
-
 
 
 
