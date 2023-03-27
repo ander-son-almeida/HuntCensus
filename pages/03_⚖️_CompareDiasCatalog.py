@@ -164,39 +164,54 @@ x1 = [1, 2, 3]
 y1 = [age_our, dist_our, Av_our]
 y2 = [age, dist, Av]
 
-fig_parameters = go.Figure()
+# fig_parameters = go.Figure()
+
+fig_parameters = make_subplots(rows=1, cols=3, subplot_titles=x)
 
 for i in range(3):
 
-    fig_parameters.add_trace(
-        go.Bar(
-            x=[f"x{i+1}"],
-            y=[y1[i]],
-            name="Our",
-            marker_color='orange',
-            opacity=0.5
-        )
-    )
+    fig_parameters.add_trace(go.Bar(x=[x1[i]], y=[y1[i]], name='Our', marker_color='orange', opacity=0.5),
+                  row=1, col=i+1)
+    
+    fig_parameters.add_trace(go.Bar(x=[x1[i]], y=[y2[i]], name='Emily', marker_color='blue', opacity=0.5),
+                  row=1, col=i+1)
+    
+    fig_parameters.update_xaxes(title_text=x[i], row=1, col=i+1, showticklabels=False)
 
-    fig_parameters.add_trace(
-        go.Bar(
-            x=[f"x{i+1}"],
-            y=[y2[i]],
-            name="Emily",
-            marker_color='blue',
-            opacity=0.5,
-        )
-    )
+fig_parameters.update_layout(legend=dict(title='', orientation='h', y=1.1, x=0.5, xanchor='center'))
 
-fig_parameters.update_layout(
-    title="Gráfico de barras",
-    xaxis_title="Eixo X",
-    yaxis_title="Eixo Y",
-    xaxis_tickangle=-45,
-    bargap=0.2,
-    bargroupgap=0.1,
-    legend_title="Legendas",
-)
+
+# for i in range(3):
+
+#     fig_parameters.add_trace(
+#         go.Bar(
+#             x=[f"x{i+1}"],
+#             y=[y1[i]],
+#             name="Our",
+#             marker_color='orange',
+#             opacity=0.5
+#         )
+#     )
+
+#     fig_parameters.add_trace(
+#         go.Bar(
+#             x=[f"x{i+1}"],
+#             y=[y2[i]],
+#             name="Emily",
+#             marker_color='blue',
+#             opacity=0.5,
+#         )
+#     )
+
+# fig_parameters.update_layout(
+#     title="Gráfico de barras",
+#     xaxis_title="Eixo X",
+#     yaxis_title="Eixo Y",
+#     xaxis_tickangle=-45,
+#     bargap=0.2,
+#     bargroupgap=0.1,
+#     legend_title="Legendas",
+# )
 
 
 # ###############################################################################	
