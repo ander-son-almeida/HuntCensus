@@ -125,5 +125,8 @@ with container1:
         st.caption("Distribution RA and DEC")
         st.plotly_chart(fig_ra_dec, use_container_width=True)
         
-
+st.write('''
+We use the Padova PARSEC version 1.2S database of stellar evolutionary tracks and isochrones 
+(Bressan et al. 2012), which is scaled to solar metal content with 𝑍⊙ = 0.0152 to perform the adjustment. 
+''')
     
