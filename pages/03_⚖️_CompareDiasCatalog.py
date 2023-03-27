@@ -289,9 +289,9 @@ with container1:
         st.subheader("CMD our")
         st.plotly_chart(fig_CMD_dias, use_container_width=True)
         
-    with col3:
-        st.subheader("Comparison of fundamental parameters")
-        st.pyplot(fig_parameters_our)
+with st.row:
+    st.subheader("Comparison of fundamental parameters")
+    st.pyplot(fig_parameters_our)
         
         
 # container2 = st.container()
