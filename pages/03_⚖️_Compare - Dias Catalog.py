@@ -173,7 +173,7 @@ for i in range(3):
     axs[i].set_xlabel(x[i])
     axs[i].set_xticks([])
     
-fig_parameters_our.legend(['Our', 'Emily'])
+fig_parameters_our.legend(['Our', 'Hunt'])
 fig_parameters_our.tight_layout()
 
 
