@@ -190,11 +190,11 @@ cluster01 = cluster01[a_ind]
 cluster02 = cluster02[b_ind]
 
 #dist
-dist_dt = pd.DataFrame({'dist': cluster01['dist'], 'distance_84': cluster02['distance_84']})
+dist_dt = pd.DataFrame({'dist': cluster01['dist']/1000, 'distance_84': cluster02['distance_84']/1000})
 scatter_dist = px.scatter(dist_dt, x='dist', y='distance_84', opacity=0.3)
 
-diag_line_dist = px.line(x = [cluster01['dist'].min(),cluster02['distance_84'].max()], 
-                         y = [cluster01['dist'].min(),cluster02['distance_84'].max()], 
+diag_line_dist = px.line(x = [(cluster01['dist']/1000).min(),(cluster02['distance_84']/1000).max()], 
+                         y = [(cluster01['dist']/1000).min(),(cluster02['distance_84']/1000).max()], 
                          color_discrete_sequence=['red'])
 
 fig_dist = go.Figure(data=scatter_dist.data + diag_line_dist.data)
@@ -241,25 +241,27 @@ with container1:
         
      
 container2 = st.container()
+col4 = st.columns(1)
 
 with container2:
-    st.write('''
-    The charts below compare the fundamental parameters of all clusters
-    ''')
+    with col4:
+        st.write('''
+        The charts below compare the fundamental parameters of all clusters
+        ''')
 
 container3 = st.container()
-col4, col5, col6  = st.columns(3)
+col5, col6, col7  = st.columns(3)
 
 with container3:
-    with col1:
+    with col5:
         st.caption("Distance")
         st.plotly_chart(fig_dist, use_container_width=True)
 
-    with col2:
+    with col6:
         st.caption("Age")
         st.plotly_chart(fig_age, use_container_width=True)
         
-    with col3:
+    with col7:
         st.caption("Av")
         st.plotly_chart(fig_av, use_container_width=True)
 
