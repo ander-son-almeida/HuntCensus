@@ -190,17 +190,17 @@ ind_commom = np.where(np.in1d(cluster02['name'], ab))[0]
 cluster02 = cluster02[ind_commom]
 
 #dist
-scatter_dist = go.Scatter(x=cluster01['dist']/1000, y=cluster02['distance_84']/1000)
+scatter_dist = px.scatter(x=cluster01['dist']/1000, y=cluster02['distance_84']/1000)
 fig_dist = go.Figure(data=[scatter_dist])
 # fig_dist.update_layout(aspectratio=dict(x=1, y=1))
 
 #age
-scatter_age = go.Scatter(x=cluster01['age'], y=cluster02['log_age_84'])
+scatter_age = px.scatter(x=cluster01['age'], y=cluster02['log_age_84'])
 fig_age = go.Figure(data=[scatter_age])
 # fig_age.update_layout(aspectratio=dict(x=1, y=1))
 
 #av
-scatter_av = go.Scatter(x=cluster01['Av'], y=cluster02['a_v_84'])
+scatter_av = px.scatter(x=cluster01['Av'], y=cluster02['a_v_84'])
 fig_av = go.Figure(data=[scatter_av])
 # fig_av.update_layout(aspectratio=dict(x=1, y=1))
 
