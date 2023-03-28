@@ -238,15 +238,19 @@ with container1:
     with col3:
         st.caption("Comparison of fundamental parameters")
         st.pyplot(fig_parameters_our)
-
+        
+     
 container2 = st.container()
-col4, col5, col6  = st.columns(3)
-
-st.write('''
-The charts below compare the fundamental parameters of all clusters
-''')
 
 with container2:
+    st.write('''
+    The charts below compare the fundamental parameters of all clusters
+    ''')
+
+container3 = st.container()
+col4, col5, col6  = st.columns(3)
+
+with container3:
     with col1:
         st.caption("Distance")
         st.plotly_chart(fig_dist, use_container_width=True)
