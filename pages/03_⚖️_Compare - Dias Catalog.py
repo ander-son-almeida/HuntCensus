@@ -245,8 +245,8 @@ col4, col5 = st.columns(2)
 
 with container2:
     with col4:
-        st.write('''
-        The charts below compare the fundamental parameters of all clusters
+        st.subheader('''
+        The plots below compare the fundamental parameters of all clusters:
         ''')
         
     with col5:
