@@ -183,14 +183,14 @@ cluster01 = np.genfromtxt('data/log-results-eDR3.txt', delimiter=';', names = Tr
 
 cluster02 = pd.read_parquet('data/parquet/clusters.parquet')
 cluster02 = cluster02.to_records()
+ab = np.intersect1d(cluster01['name'],cluster02['name'])
 
-ab, a_ind, b_ind = np.intersect1d(cluster01['name'],cluster02['name'], 
-                                  return_indices=True)
-cluster01 = cluster01[b_ind]
-cluster02 = cluster02[a_ind]
+#common ind
+ind_commom = np.where(np.in1d(cluster02['name'], ab))[0]
+cluster02 = cluster02[ind_commom]
 
 #dist
-scatter_dist = go.Scatter(x=cluster01['dist'], y=cluster02['distance_84'])
+scatter_dist = go.Scatter(x=cluster01['dist']/1000, y=cluster02['distance_84']/1000)
 fig_dist = go.Figure(data=[scatter_dist])
 # fig_dist.update_layout(aspectratio=dict(x=1, y=1))
 
