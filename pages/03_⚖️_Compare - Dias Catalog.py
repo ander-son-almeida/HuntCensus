@@ -190,13 +190,13 @@ ind_commom = np.where(np.in1d(cluster02['name'], ab))[0]
 cluster02 = cluster02[ind_commom]
 
 #dist
-dist_dt = pd.DataFrame({'dist': cluster01['dist']/1000, 'distance_84': cluster02['distance_84']/1000})
+dist_dt = pd.DataFrame({'dist': cluster01['dist'], 'distance_84': cluster02['distance_84']})
 scatter_dist = px.scatter(dist_dt, x='Our', y='Hunt', opacity=0.3)
 fig_dist = go.Figure(data=scatter_dist)
 # fig_dist.update_layout(aspectratio=dict(x=1, y=1))
 
 #age
-age_dt = pd.DataFrame({'dist': cluster01['age'], 'log_age_84': cluster02['log_age_84']})
+age_dt = pd.DataFrame({'age': cluster01['age'], 'log_age_84': cluster02['log_age_84']})
 scatter_age = px.scatter(age_dt, x='Our', y='Hunt', opacity=0.3)
 fig_age = go.Figure(data=scatter_age)
 # fig_age.update_layout(aspectratio=dict(x=1, y=1))
