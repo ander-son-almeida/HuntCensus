@@ -191,19 +191,19 @@ cluster02 = cluster02[b_ind]
 
 #dist
 dist_dt = pd.DataFrame({'dist': cluster01['dist'], 'distance_84': cluster02['distance_84']})
-scatter_dist = px.scatter(dist_dt, x='Our', y='Hunt', opacity=0.3)
+scatter_dist = px.scatter(dist_dt, x='dist', y='distance_84', opacity=0.3)
 fig_dist = go.Figure(data=scatter_dist)
 # fig_dist.update_layout(aspectratio=dict(x=1, y=1))
 
 #age
 age_dt = pd.DataFrame({'age': cluster01['age'], 'log_age_84': cluster02['log_age_84']})
-scatter_age = px.scatter(age_dt, x='Our', y='Hunt', opacity=0.3)
+scatter_age = px.scatter(age_dt, x='age', y='log_age_84', opacity=0.3)
 fig_age = go.Figure(data=scatter_age)
 # fig_age.update_layout(aspectratio=dict(x=1, y=1))
 
 #av
 age_dt = pd.DataFrame({'Av': cluster01['Av'], 'a_v_84': cluster02['a_v_84']})
-scatter_av = px.scatter(age_dt, x='Our', y='Hunt', opacity=0.3)
+scatter_av = px.scatter(age_dt, x='Av', y='a_v_84', opacity=0.3)
 fig_av = go.Figure(data=scatter_av)
 # fig_av.update_layout(aspectratio=dict(x=1, y=1))
 
