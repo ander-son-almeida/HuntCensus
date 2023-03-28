@@ -251,7 +251,7 @@ with container2:
         
     with col5:
         st.write('''
-        The charts below compare the fundamental parameters of all clusters
+        
         ''')
 
 container3 = st.container()
