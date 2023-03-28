@@ -198,19 +198,30 @@ diag_line_dist = px.line(x = [cluster01['dist'].min(),cluster02['distance_84'].m
                          color_discrete_sequence=['red'])
 
 fig_dist = go.Figure(data=scatter_dist.data + diag_line_dist.data)
-# fig_dist.update_layout(aspectratio=dict(x=1, y=1))
+fig_dist.update_layout(xaxis_title= 'Our',
+                  yaxis_title="Hunt")
 
 #age
 age_dt = pd.DataFrame({'age': cluster01['age'], 'log_age_84': cluster02['log_age_84']})
 scatter_age = px.scatter(age_dt, x='age', y='log_age_84', opacity=0.3)
-fig_age = go.Figure(data=scatter_age)
-# fig_age.update_layout(aspectratio=dict(x=1, y=1))
+diag_line_age = px.line(x = [cluster01['age'].min(),cluster02['log_age_84'].max()], 
+                         y = [cluster01['age'].min(),cluster02['log_age_84'].max()], 
+                         color_discrete_sequence=['red'])
+fig_age = go.Figure(data=scatter_age.data + diag_line_age.data)
+fig_age.update_layout(xaxis_title= 'Our',
+                  yaxis_title="Hunt")
+
 
 #av
 age_dt = pd.DataFrame({'Av': cluster01['Av'], 'a_v_84': cluster02['a_v_84']})
 scatter_av = px.scatter(age_dt, x='Av', y='a_v_84', opacity=0.3)
 fig_av = go.Figure(data=scatter_av)
-# fig_av.update_layout(aspectratio=dict(x=1, y=1))
+diag_line_av = px.line(x = [cluster01['Av'].min(),cluster02['a_v_84'].max()], 
+                         y = [cluster01['Av'].min(),cluster02['a_v_84'].max()], 
+                         color_discrete_sequence=['red'])
+fig_av = go.Figure(data=fig_av.data + diag_line_av.data)
+fig_av.update_layout(xaxis_title= 'Our',
+                  yaxis_title="Hunt")
 
 container1 = st.container()
 col1, col2, col3  = st.columns(3)
