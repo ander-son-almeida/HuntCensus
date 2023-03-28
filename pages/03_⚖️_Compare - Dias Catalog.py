@@ -190,18 +190,21 @@ ind_commom = np.where(np.in1d(cluster02['name'], ab))[0]
 cluster02 = cluster02[ind_commom]
 
 #dist
-scatter_dist = px.scatter(x=cluster01['dist']/1000, y=cluster02['distance_84']/1000)
-fig_dist = go.Figure(data=[scatter_dist])
+dist_dt = pd.DataFrame({'dist': cluster01['dist']/1000, 'distance_84': cluster02['distance_84']/1000})
+scatter_dist = px.scatter(dist_dt, x='Our', y='Hunt', opacity=0.3)
+fig_dist = go.Figure(data=scatter_dist)
 # fig_dist.update_layout(aspectratio=dict(x=1, y=1))
 
 #age
-scatter_age = px.scatter(x=cluster01['age'], y=cluster02['log_age_84'])
-fig_age = go.Figure(data=[scatter_age])
+age_dt = pd.DataFrame({'dist': cluster01['age'], 'log_age_84': cluster02['log_age_84']})
+scatter_age = px.scatter(age_dt, x='Our', y='Hunt', opacity=0.3)
+fig_age = go.Figure(data=scatter_age)
 # fig_age.update_layout(aspectratio=dict(x=1, y=1))
 
 #av
-scatter_av = px.scatter(x=cluster01['Av'], y=cluster02['a_v_84'])
-fig_av = go.Figure(data=[scatter_av])
+age_dt = pd.DataFrame({'Av': cluster01['Av'], 'a_v_84': cluster02['a_v_84']})
+scatter_av = px.scatter(age_dt, x='Our', y='Hunt')
+fig_av = go.Figure(data=scatter_av)
 # fig_av.update_layout(aspectratio=dict(x=1, y=1))
 
 
