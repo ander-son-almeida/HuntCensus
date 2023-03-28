@@ -241,7 +241,7 @@ with container1:
         
      
 container2 = st.container()
-col4, col5 = st.columns(1)
+col4, col5 = st.columns(2)
 
 with container2:
     with col4:
