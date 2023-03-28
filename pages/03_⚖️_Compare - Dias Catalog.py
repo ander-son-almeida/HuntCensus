@@ -192,7 +192,12 @@ cluster02 = cluster02[b_ind]
 #dist
 dist_dt = pd.DataFrame({'dist': cluster01['dist'], 'distance_84': cluster02['distance_84']})
 scatter_dist = px.scatter(dist_dt, x='dist', y='distance_84', opacity=0.3)
-fig_dist = go.Figure(data=scatter_dist)
+
+diag_line_dist = px.line(x = [cluster01['dist'].min(),cluster02['distance_84'].min()], 
+                         y = [cluster01['dist'].max(),cluster02['distance_84'].max()], 
+                         color_discrete_sequence=['red'])
+
+fig_dist = go.Figure(data=scatter_dist.data + diag_line_dist.data)
 # fig_dist.update_layout(aspectratio=dict(x=1, y=1))
 
 #age
