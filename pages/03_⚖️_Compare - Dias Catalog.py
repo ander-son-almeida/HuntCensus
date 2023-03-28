@@ -183,11 +183,11 @@ cluster01 = np.genfromtxt('data/log-results-eDR3.txt', delimiter=';', names = Tr
 
 cluster02 = pd.read_parquet('data/parquet/clusters.parquet')
 cluster02 = cluster02.to_records()
-ab = np.intersect1d(cluster01['name'],cluster02['name'])
 
-#common ind
-ind_commom = np.where(np.in1d(cluster02['name'], ab))[0]
-cluster02 = cluster02[ind_commom]
+ab, a_ind, b_ind = np.intersect1d(cluster01['name'],cluster02['name'], 
+                                  return_indices=True)
+cluster01 = cluster01[a_ind]
+cluster02 = cluster02[b_ind]
 
 #dist
 dist_dt = pd.DataFrame({'dist': cluster01['dist'], 'distance_84': cluster02['distance_84']})
@@ -203,11 +203,9 @@ fig_age = go.Figure(data=scatter_age)
 
 #av
 age_dt = pd.DataFrame({'Av': cluster01['Av'], 'a_v_84': cluster02['a_v_84']})
-scatter_av = px.scatter(age_dt, x='Our', y='Hunt')
+scatter_av = px.scatter(age_dt, x='Our', y='Hunt', opacity=0.3)
 fig_av = go.Figure(data=scatter_av)
 # fig_av.update_layout(aspectratio=dict(x=1, y=1))
-
-
 
 container1 = st.container()
 col1, col2, col3  = st.columns(3)
