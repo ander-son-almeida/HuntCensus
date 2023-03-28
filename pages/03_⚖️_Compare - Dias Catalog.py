@@ -242,17 +242,21 @@ with container1:
 container2 = st.container()
 col4, col5, col6  = st.columns(3)
 
+st.write('''
+The charts below compare the fundamental parameters of all clusters
+''')
+
 with container2:
     with col1:
-        st.caption("Distance catalog")
+        st.caption("Distance")
         st.plotly_chart(fig_dist, use_container_width=True)
 
     with col2:
-        st.caption("Age catalog")
+        st.caption("Age")
         st.plotly_chart(fig_age, use_container_width=True)
         
     with col3:
-        st.caption("Av catalog")
+        st.caption("Av")
         st.plotly_chart(fig_av, use_container_width=True)
 
 
