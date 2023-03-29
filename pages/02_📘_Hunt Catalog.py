@@ -98,28 +98,33 @@ fit_iso = make_obs_iso(filters, grid_iso, dist, Av, gaia_ext = True)
 cor_obs = members_ship['phot_bp_mean_mag']-members_ship['phot_rp_mean_mag']
 absMag_obs = members_ship['phot_g_mean_mag']
 
-cmd_scatter = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_obs})
+cmd_scatter = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_obs, 'probability':members_ship['probability']})
 
 cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
                         'Gmag': fit_iso['Gmag']})
 
 fig1 = px.scatter(cmd_scatter, x = 'G_BPmag - G_RPmag', y = 'Gmag',
-                  opacity=0.3)
+                  opacity=0.5, color='probability', color_continuous_scale = 'inferno')
 
 fig2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
 
 fig = go.Figure(data = fig1.data + fig2.data).update_layout(coloraxis=fig1.layout.coloraxis)
 fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   yaxis_title="G (mag)",
-                  coloraxis_colorbar=dict(title="M☉"),
+                  coloraxis_colorbar=dict(title="Pmemb"),
                   yaxis_range=[20,5])
 
 ###############################################################################	   
 # RA x DEC 
 ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
-                       'DEC': members_ship['dec']})
+                       'DEC': members_ship['dec'], 
+                       'probability':members_ship['probability']})
 
-fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC')
+fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'inferno')
+fig.update_layout(xaxis_title= "RA",
+                  yaxis_title="DEC",
+                  coloraxis_colorbar=dict(title="Pmemb"))
+
 
 ###############################################################################	
 

@@ -86,7 +86,7 @@ with container3:
         st.plotly_chart(fig_dist, use_container_width=True)
 
     with col7:
-        st.subheader("Age")
+        st.subheader("age")
         st.plotly_chart(fig_age, use_container_width=True)
         
     with col8:
