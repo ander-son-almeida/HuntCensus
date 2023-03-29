@@ -183,7 +183,7 @@ fig_parameters_our.tight_layout()
 
 
 container1 = st.container()
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with container1:
     with col1:
@@ -193,6 +193,11 @@ with container1:
     with col2:
         st.caption("CMD our")
         st.plotly_chart(fig_CMD_dias, use_container_width=True)
+        
+    with col3:
+        st.caption("Comparison of fundamental parameters")
+        st.pyplot(fig_parameters_our)
+
         
 
      
