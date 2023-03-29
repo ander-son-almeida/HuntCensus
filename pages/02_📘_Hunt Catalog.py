@@ -15,7 +15,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from oc_tools_padova_edr3 import *
 
-
 st.set_page_config(page_title="Emily Hunt Catalog",layout='wide', page_icon='📘')
 
 st.markdown(
@@ -56,7 +55,6 @@ members_ship = members_ship[members_ship['name'] == cluster_name]
 # #aply fiter probability and mag
 # members_ship = members_ship[(members_ship['probability'] > 0.5)&(members_ship['phot_g_mean_mag'] <19.)]
 
-
 RA = clusters['ra']
 DEC = clusters['dec']
 age = clusters['log_age_84'].iloc[0]
@@ -85,8 +83,6 @@ st.sidebar.subheader("$Tidal~radius = {}~(pc)$".format(np.around(radius_t_pc,dec
 st.sidebar.subheader("$Total~radius = {}~(pc)$".format(np.around(radius_total_pc,decimals=3)))
 st.sidebar.subheader("$Parallax = {}\pm{}$".format(np.around(parallax,decimals=3), np.around(parallax_error,decimals=3)))
 st.sidebar.subheader("$Radial~velocity = {}\pm{}~km/s^{{-1}}$".format(np.around(radial_velocity,decimals=3), np.around(radial_velocity_error,decimals=3)))
-
-
 
 #Graphics
 ###############################################################################
@@ -130,9 +126,7 @@ fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC')
 container1 = st.container()
 col1, col2 = st.columns(2)
 
-
 with container1:
-    
     
     with col1:
         st.caption("CMD")

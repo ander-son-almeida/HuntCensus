@@ -116,12 +116,14 @@ fit_iso = make_obs_iso(filters, grid_iso, dist, Av, gaia_ext = True)
 cor_obs_emily = members_ship_Emily['phot_bp_mean_mag']-members_ship_Emily['phot_rp_mean_mag']
 absMag_obs_emily = members_ship_Emily['phot_g_mean_mag']
 
-cmd_scatter_emily = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs_emily, 'Gmag': absMag_obs_emily})
+cmd_scatter_emily = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs_emily, 
+                                  'Gmag': absMag_obs_emily, 
+                                  'probability':members_ship_Emily['probability']})
 
 cmd_iso_emily = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
                         'Gmag': fit_iso['Gmag']})
 
-cmd_scatter_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3)
+cmd_scatter_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3, color='probability')
 
 cmd_emily_iso = px.line(cmd_iso_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
 
@@ -131,6 +133,7 @@ fig_CMD_emily.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   coloraxis_colorbar=dict(title="M☉"),
                   yaxis_range=[20,5])
 
+###############################################################################
 #CMD Wilton Dias
 grid_iso = get_iso_from_grid(age,(10.**FeH_our)*0.0152,filters,refMag, nointerp=False)
 fit_iso = make_obs_iso(filters, grid_iso, dist, Av, gaia_ext = True) 
