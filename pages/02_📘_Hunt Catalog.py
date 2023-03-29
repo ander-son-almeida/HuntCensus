@@ -111,7 +111,7 @@ fig2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequ
 fig = go.Figure(data = fig1.data + fig2.data).update_layout(coloraxis=fig1.layout.coloraxis)
 fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   yaxis_title="G (mag)",
-                  coloraxis_colorbar=dict(title="Pmemb"),
+                  coloraxis_colorbar=dict(title="probability"),
                   yaxis_range=[20,5])
 
 ###############################################################################	   
@@ -121,7 +121,7 @@ ra_dec = pd.DataFrame({'RA': members_ship['ra'],
                        'probability':members_ship['probability']})
 
 fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'inferno')
-fig.update_layout(coloraxis_colorbar=dict(title="Pmemb"))
+fig.update_layout(coloraxis_colorbar=dict(title="probability"))
 
 
 ###############################################################################	
