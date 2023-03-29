@@ -63,19 +63,20 @@ fig_av = go.Figure(data=fig_av.data + diag_line_av.data)
 fig_av.update_layout(xaxis_title= 'Our',
                   yaxis_title="Hunt")
 
-container1 = st.container()
-col4, col5 = st.columns(2)
+# container1 = st.container()
+# col4, col5 = st.columns(2)
 
-with container1:
-    with col4:
-        st.subheader('''
-        The plots below compare the fundamental parameters of all clusters:
-        ''')
+# with container1:
+#     with col4:
+    
+st.subheader('''
+The plots below compare the fundamental parameters of all clusters:
+''')
         
-    with col5:
-        st.write('''
+    # with col5:
+    #     st.write('''
         
-        ''')
+    #     ''')
 
 container3 = st.container()
 col6, col7, col8  = st.columns(3)
