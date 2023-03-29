@@ -123,7 +123,8 @@ cmd_scatter_emily = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs_emily,
 cmd_iso_emily = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
                         'Gmag': fit_iso['Gmag']})
 
-cmd_scatter_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3, color='probability')
+cmd_scatter_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3,
+                               color='probability', color_continuous_scale = 'viridis')
 
 cmd_emily_iso = px.line(cmd_iso_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
 
