@@ -83,15 +83,15 @@ col6, col7, col8  = st.columns(3)
 with container3:
     with col6:
         st.subheader("Distance")
-        st.plotly_chart(fig_dist, use_container_width=True)
+        st.plotly_chart(fig_dist)
 
     with col7:
         st.subheader("age")
-        st.plotly_chart(fig_age, use_container_width=True)
+        st.plotly_chart(fig_age)
         
     with col8:
         st.subheader("Av")
-        st.plotly_chart(fig_av, use_container_width=True)
+        st.plotly_chart(fig_av)
 
 
 
