@@ -123,7 +123,7 @@ cmd_scatter_emily = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs_emily,
 cmd_iso_emily = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
                         'Gmag': fit_iso['Gmag']})
 
-cmd_scatter_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3,
+cmd_scatter_emily = px.scatter(cmd_scatter_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.5,
                                color='probability', color_continuous_scale = 'inferno')
 
 cmd_emily_iso = px.line(cmd_iso_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
@@ -146,7 +146,7 @@ cmd_scatter_dias = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_ob
 cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
                         'Gmag': fit_iso['Gmag']})
 
-CMD_scatter_dias = px.scatter(cmd_scatter_dias, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3, color='Pmemb', 
+CMD_scatter_dias = px.scatter(cmd_scatter_dias, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.5, color='Pmemb', 
                               color_continuous_scale = 'inferno')
 
 CMD_iso_dias = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
