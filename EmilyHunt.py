@@ -38,11 +38,21 @@ members = members[(members['probability'] > 0.5)&(members['phot_g_mean_mag'] <19
 
 ###############################################################################
 # Emily fundamental parameters
+
+ra = clusters['ra'].iloc[0]
+dec = clusters['dec'].iloc[0]
 age = clusters['log_age_84'].iloc[0]
 dist = clusters['distance_84'].iloc[0]/1000 #kpc
 Av = clusters['a_v_84'].iloc[0]
-
-
+n_stars = clusters['n_stars'].iloc[0]# Number members
+cst_tidal = clusters['n_stars_tidal'].iloc[0] # Number stars tidal radius
+radius_c_pc = clusters['radius_c_pc'].iloc[0] #Core radius
+radius_t_pc = clusters['radius_t_pc'].iloc[0] #Tidal radius
+radius_total_pc = clusters['radius_total_pc'].iloc[0] #Total radius
+parallax = clusters['parallax'].iloc[0] #parallax
+parallax_error = clusters['parallax_error'].iloc[0] # parallax_error
+radial_velocity = clusters['radial_velocity'].iloc[0] # radial_velocity
+radial_velocity_error = clusters['radial_velocity_error'].iloc[0] # radial_velocity_error
 
 
 
@@ -109,10 +119,25 @@ for i in range(3):
     
 fig.legend(['Our', 'Emily'])
 
+cluster01 = np.genfromtxt(dir_our + r'\results_eDR3_likelihood_{}\results\log-results-eDR3.txt'.format(version), 
+                                        delimiter=';', names = True, dtype=None, encoding=None, autostrip=True)
+
+clusters02 = pd.read_parquet(dir + r'\data\parquet\clusters.parquet')
+clusters02 = clusters02.to_records()
+
+# clusters in common
+ab, a_ind, b_ind = np.intersect1d(cluster01['name'],clusters02['name'], 
+                                  return_indices=True)
+cluster01 = cluster01[a_ind]
+clusters02 = clusters02[b_ind]
 
 
 
+plt.figure()
+plt.title('distance')
+plt.scatter(cluster01['dist']/1000,clusters02['distance_84']/1000)
 
+dist_dt = pd.DataFrame({'dist': cluster01['dist'], 'distance_84': clusters02['distance_84']})
 
 
 
