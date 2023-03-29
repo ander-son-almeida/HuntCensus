@@ -111,7 +111,7 @@ fig2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequ
 fig = go.Figure(data = fig1.data + fig2.data).update_layout(coloraxis=fig1.layout.coloraxis)
 fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   yaxis_title="G (mag)",
-                  coloraxis_colorbar=dict(title="Pmemb"),
+                  coloraxis_colorbar=dict(title="probability"),
                   yaxis_range=[20,5])
 
 ###############################################################################	   
