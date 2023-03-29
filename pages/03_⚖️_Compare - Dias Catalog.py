@@ -131,7 +131,7 @@ cmd_emily_iso = px.line(cmd_iso_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', colo
 fig_CMD_emily = go.Figure(data = cmd_scatter_emily.data + cmd_emily_iso.data).update_layout(coloraxis=cmd_scatter_emily.layout.coloraxis)
 fig_CMD_emily.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   yaxis_title="G (mag)",
-                  coloraxis_colorbar=dict(title="probability"),
+                  coloraxis_colorbar=dict(title="Probability"),
                   yaxis_range=[20,5])
 
 ###############################################################################
@@ -144,16 +144,17 @@ absMag_obs = members_ship['Gmag']
 cmd_scatter_dias = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_obs})
 
 cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
-                        'Gmag': fit_iso['Gmag']})
+                        'Gmag': fit_iso['Gmag'],'Pmemb': members_ship['Pmemb']})
 
-CMD_scatter_dias = px.scatter(cmd_scatter_dias, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3)
+CMD_scatter_dias = px.scatter(cmd_scatter_dias, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3, color='Pmemb', 
+                              color_continuous_scale = 'viridis')
 
 CMD_iso_dias = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
 
 fig_CMD_dias = go.Figure(data = CMD_scatter_dias.data + CMD_iso_dias.data).update_layout(coloraxis=CMD_scatter_dias.layout.coloraxis)
 fig_CMD_dias.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   yaxis_title="G (mag)",
-                  coloraxis_colorbar=dict(title="M☉"),
+                  coloraxis_colorbar=dict(title="Probability"),
                   yaxis_range=[20,5])
 
 ###############################################################################	
