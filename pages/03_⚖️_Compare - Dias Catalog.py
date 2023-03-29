@@ -131,7 +131,7 @@ cmd_emily_iso = px.line(cmd_iso_emily, x = 'G_BPmag - G_RPmag', y = 'Gmag', colo
 fig_CMD_emily = go.Figure(data = cmd_scatter_emily.data + cmd_emily_iso.data).update_layout(coloraxis=cmd_scatter_emily.layout.coloraxis)
 fig_CMD_emily.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   yaxis_title="G (mag)",
-                  coloraxis_colorbar=dict(title="Probability"),
+                  coloraxis_colorbar=dict(title="Pmemb"),
                   yaxis_range=[20,5])
 
 ###############################################################################
@@ -154,7 +154,7 @@ CMD_iso_dias = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discr
 fig_CMD_dias = go.Figure(data = CMD_scatter_dias.data + CMD_iso_dias.data).update_layout(coloraxis=CMD_scatter_dias.layout.coloraxis)
 fig_CMD_dias.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   yaxis_title="G (mag)",
-                  coloraxis_colorbar=dict(title="Probability"),
+                  coloraxis_colorbar=dict(title="Pmemb"),
                   yaxis_range=[20,5])
 
 ###############################################################################	
