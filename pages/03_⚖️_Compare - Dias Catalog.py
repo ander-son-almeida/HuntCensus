@@ -141,10 +141,10 @@ fit_iso = make_obs_iso(filters, grid_iso, dist, Av, gaia_ext = True)
 cor_obs = members_ship['BPmag']-members_ship['RPmag']
 absMag_obs = members_ship['Gmag']
 
-cmd_scatter_dias = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_obs})
+cmd_scatter_dias = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_obs, 'Pmemb': members_ship['Pmemb']})
 
 cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
-                        'Gmag': fit_iso['Gmag'],'Pmemb': members_ship['Pmemb']})
+                        'Gmag': fit_iso['Gmag']})
 
 CMD_scatter_dias = px.scatter(cmd_scatter_dias, x = 'G_BPmag - G_RPmag', y = 'Gmag', opacity=0.3, color='Pmemb', 
                               color_continuous_scale = 'viridis')
