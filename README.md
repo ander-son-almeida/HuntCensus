@@ -1,1 +1,1 @@
-Updating dashboard. Access: 🔗 (https://catalogscomparison.streamlit.app/)
+Updating dashboard. Access: 🔗 https://catalogscomparison.streamlit.app/
