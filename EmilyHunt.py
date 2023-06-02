@@ -141,7 +141,16 @@ dist_dt = pd.DataFrame({'dist': cluster01['dist'], 'distance_84': clusters02['di
 
 
 
-
+fig_ra_dec, ax = plt.subplots(figsize=(5, 5))
+members = members.reset_index(drop=True)
+ind = np.argsort(members['probability'])
+scatter = ax.scatter(members['ra'][ind], members['dec'][ind], c=members['probability'][ind], cmap='jet', alpha=0.9)
+cbar = plt.colorbar(scatter)
+cbar.set_label('probability')
+ax.set_aspect('equal')
+ax.set_xlabel('RA')
+ax.set_ylabel('DEC')
+fig_ra_dec.tight_layout()
 
 
 

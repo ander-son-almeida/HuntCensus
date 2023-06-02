@@ -126,7 +126,7 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 # fig_ra_dec01 = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
 # fig.update_layout(coloraxis_colorbar=dict(title="probability"))
 
-fig_ra_dec, ax = plt.subplots(figsize=(5, 5))
+fig_ra_dec, ax = plt.subplots()
 members_ship = members_ship.reset_index(drop=True)
 ind = np.argsort(members_ship['probability'])
 scatter = ax.scatter(members_ship['ra'][ind], members_ship['dec'][ind], 
