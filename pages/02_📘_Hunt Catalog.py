@@ -117,7 +117,6 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   coloraxis_colorbar=dict(title="probability"),
                   yaxis_range=[20,5])
 
-fig.update_yaxes(scaleanchor = "x",scaleratio = 1)
 
 ###############################################################################	   
 # RA x DEC 
