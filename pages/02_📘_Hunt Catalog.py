@@ -129,7 +129,7 @@ ra_dec = pd.DataFrame({'RA': members_ship['ra'][ind],
 fig_ra_dec01 = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.9, color='probability', color_continuous_scale = 'Jet')
 fig_ra_dec01.update_layout(coloraxis_colorbar=dict(title="probability"))
 
-fig.update_xaxes(range=[ra_dec['RA'].min(),ra_dec['RA'].max()], constrain="domain")
+# fig.update_xaxes(range=[ra_dec['RA'].min(),ra_dec['RA'].max()], constrain="domain")
 fig_ra_dec01.update_yaxes(scaleanchor = "x",scaleratio = 1)
 
 
