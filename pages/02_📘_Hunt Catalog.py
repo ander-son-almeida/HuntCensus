@@ -117,6 +117,8 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
                   coloraxis_colorbar=dict(title="probability"),
                   yaxis_range=[20,5])
 
+fig.update_yaxes(scaleanchor = "x",scaleratio = 1)
+
 ###############################################################################	   
 # RA x DEC 
 members_ship = members_ship.reset_index(drop=True)
@@ -129,24 +131,24 @@ ra_dec = pd.DataFrame({'RA': members_ship['ra'][ind],
 fig_ra_dec01 = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.9, color='probability', color_continuous_scale = 'Jet')
 fig_ra_dec01.update_layout(coloraxis_colorbar=dict(title="probability"))
 
-# fig.update_xaxes(range=[ra_dec['RA'].min(),ra_dec['RA'].max()], constrain="domain")
+# fig_ra_dec01.update_xaxes(range=[ra_dec['RA'].min(),ra_dec['RA'].max()], constrain="domain")
 fig_ra_dec01.update_yaxes(scaleanchor = "x",scaleratio = 1)
 
 
 
 #------------------------------------------------------------------------------
 
-fig_ra_dec, ax = plt.subplots()
-members_ship = members_ship.reset_index(drop=True)
-ind = np.argsort(members_ship['probability'])
-scatter = ax.scatter(members_ship['ra'][ind], members_ship['dec'][ind], 
-                     c=members_ship['probability'][ind], cmap='jet', alpha=0.9)
-cbar = plt.colorbar(scatter)
-cbar.set_label('probability')
-ax.set_aspect('equal')
-ax.set_xlabel('RA')
-ax.set_ylabel('DEC')
-fig_ra_dec.tight_layout()
+# fig_ra_dec, ax = plt.subplots()
+# members_ship = members_ship.reset_index(drop=True)
+# ind = np.argsort(members_ship['probability'])
+# scatter = ax.scatter(members_ship['ra'][ind], members_ship['dec'][ind], 
+#                      c=members_ship['probability'][ind], cmap='jet', alpha=0.9)
+# cbar = plt.colorbar(scatter)
+# cbar.set_label('probability')
+# ax.set_aspect('equal')
+# ax.set_xlabel('RA')
+# ax.set_ylabel('DEC')
+# fig_ra_dec.tight_layout()
 ###############################################################################	
 
 container1 = st.container()
