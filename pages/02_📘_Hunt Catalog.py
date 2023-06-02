@@ -141,7 +141,7 @@ with container1:
     
     with col1:
         # st.caption("CMD")
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
 
     with col2:
         # st.caption("Distribution RA and DEC")
