@@ -105,7 +105,7 @@ cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag
                         'Gmag': fit_iso['Gmag']})
 
 fig1 = px.scatter(cmd_scatter, x = 'G_BPmag - G_RPmag', y = 'Gmag',
-                  opacity=0.5, color='probability', color_continuous_scale = 'Jet')
+                  opacity=0.3, color='probability', color_continuous_scale = 'Jet')
 
 fig2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
 
@@ -117,21 +117,21 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 
 ###############################################################################	   
 # RA x DEC 
-# ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
-#                         'DEC': members_ship['dec'], 
-#                         'probability':members_ship['probability']})
+ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
+                        'DEC': members_ship['dec'], 
+                        'probability':members_ship['probability']})
 
-# fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
-# fig.update_layout(coloraxis_colorbar=dict(title="probability"))
+fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
+fig.update_layout(coloraxis_colorbar=dict(title="probability"))
 
-fig_ra_dec, ax = plt.subplots(figsize=(5, 5))
-scatter = ax.scatter(members_ship['ra'], members_ship['dec'], c=members_ship['probability'], cmap='jet')
-cbar = plt.colorbar(scatter)
-cbar.set_label('probability')
-ax.set_aspect('equal')
-ax.set_xlabel('RA')
-ax.set_ylabel('DEC')
-fig_ra_dec.tight_layout()
+# fig_ra_dec, ax = plt.subplots(figsize=(5, 5))
+# scatter = ax.scatter(members_ship['ra'], members_ship['dec'], c=members_ship['probability'], cmap='jet')
+# cbar = plt.colorbar(scatter)
+# cbar.set_label('probability')
+# ax.set_aspect('equal')
+# ax.set_xlabel('RA')
+# ax.set_ylabel('DEC')
+# fig_ra_dec.tight_layout()
 ###############################################################################	
 
 container1 = st.container()
@@ -145,8 +145,8 @@ with container1:
 
     with col2:
         # st.caption("Distribution RA and DEC")
-        # st.plotly_chart(fig_ra_dec)
-        st.pyplot(fig_ra_dec)
+        st.plotly_chart(fig_ra_dec, use_container_width=True)
+        # st.pyplot(fig_ra_dec)
         
 st.write('''
 We use the Padova PARSEC version 1.2S database of stellar evolutionary tracks and isochrones 
