@@ -140,11 +140,11 @@ col1, col2 = st.columns(2)
 with container1:
     
     with col1:
-        st.caption("CMD")
+        # st.caption("CMD")
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        st.caption("Distribution RA and DEC")
+        # st.caption("Distribution RA and DEC")
         # st.plotly_chart(fig_ra_dec, use_container_width=True)
         st.pyplot(fig_ra_dec)
         
