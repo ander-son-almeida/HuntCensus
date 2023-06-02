@@ -119,12 +119,14 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 
 ###############################################################################	   
 # RA x DEC 
-# ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
-#                         'DEC': members_ship['dec'], 
-#                         'probability':members_ship['probability']})
+ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
+                        'DEC': members_ship['dec'], 
+                        'probability':members_ship['probability']})
 
-# fig_ra_dec01 = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
-# fig.update_layout(coloraxis_colorbar=dict(title="probability"))
+fig_ra_dec01 = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.9, color='probability', color_continuous_scale = 'Jet')
+fig_ra_dec01.update_layout(coloraxis_colorbar=dict(title="probability"))
+
+#------------------------------------------------------------------------------
 
 fig_ra_dec, ax = plt.subplots()
 members_ship = members_ship.reset_index(drop=True)
@@ -153,11 +155,10 @@ with container1:
         # st.plotly_chart(fig_ra_dec, use_container_width=True)
         st.pyplot(fig_ra_dec)
 
-# container2 = st.container()
-# col3 = st.columns(1)
-#     with col3:
-#         # st.caption("CMD")
-#         st.plotly_chart(fig, use_container_width=True)
+container2 = st.container()
+col3 = st.columns(1)
+with col3:
+    st.plotly_chart(fig_ra_dec01, use_container_width=True)
 
         
 st.write('''
