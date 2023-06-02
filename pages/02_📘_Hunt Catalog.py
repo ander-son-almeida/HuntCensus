@@ -105,7 +105,7 @@ cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag
                         'Gmag': fit_iso['Gmag']})
 
 fig1 = px.scatter(cmd_scatter, x = 'G_BPmag - G_RPmag', y = 'Gmag',
-                  opacity=0.3, color='probability', color_continuous_scale = 'Jet')
+                  opacity=0.8, color='probability', color_continuous_scale = 'Jet')
 
 fig2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
 
