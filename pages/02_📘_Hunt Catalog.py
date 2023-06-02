@@ -119,9 +119,12 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 
 ###############################################################################	   
 # RA x DEC 
-ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
-                        'DEC': members_ship['dec'], 
-                        'probability':members_ship['probability']})
+members_ship = members_ship.reset_index(drop=True)
+ind = np.argsort(members_ship['probability'])
+
+ra_dec = pd.DataFrame({'RA': members_ship['ra'][ind], 
+                        'DEC': members_ship['dec'][ind], 
+                        'probability':members_ship['probability'][ind]})
 
 fig_ra_dec01 = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.9, color='probability', color_continuous_scale = 'Jet')
 fig_ra_dec01.update_layout(coloraxis_colorbar=dict(title="probability"))
