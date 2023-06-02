@@ -98,6 +98,10 @@ refMag = 'Gmag'
 grid_iso = get_iso_from_grid(age,(10.**0)*0.0152,filters,refMag, nointerp=False)
 fit_iso = make_obs_iso(filters, grid_iso, dist, Av, gaia_ext = True) 
 
+members_ship = members_ship.reset_index(drop=True)
+ind = np.argsort(members_ship['probability'])
+members_ship = members_ship[ind]
+
 cor_obs = members_ship['phot_bp_mean_mag']-members_ship['phot_rp_mean_mag']
 absMag_obs = members_ship['phot_g_mean_mag']
 
@@ -120,12 +124,12 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 
 ###############################################################################	   
 # RA x DEC 
-members_ship = members_ship.reset_index(drop=True)
-ind = np.argsort(members_ship['probability'])
+# members_ship = members_ship.reset_index(drop=True)
+# ind = np.argsort(members_ship['probability'])
 
-ra_dec = pd.DataFrame({'RA': members_ship['ra'][ind], 
-                        'DEC': members_ship['dec'][ind], 
-                        'probability':members_ship['probability'][ind]})
+ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
+                        'DEC': members_ship['dec'], 
+                        'probability':members_ship['probability']})
 
 fig_ra_dec01 = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.9, color='probability', color_continuous_scale = 'Jet')
 fig_ra_dec01.update_layout(coloraxis_colorbar=dict(title="probability"))
