@@ -124,12 +124,14 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 # fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
 # fig.update_layout(coloraxis_colorbar=dict(title="probability"))
 
-
-fig_ra_dec, ax = plt.subplots(figsize=(6, 6))
+fig_ra_dec, ax = plt.subplots(figsize=(5, 5))
 scatter = ax.scatter(members_ship['ra'], members_ship['dec'], c=members_ship['probability'], cmap='jet')
 cbar = plt.colorbar(scatter)
 cbar.set_label('probability')
 ax.set_aspect('equal')
+ax.set_xlabel('RA')
+ax.set_ylabel('DEC')
+
 ###############################################################################	
 
 container1 = st.container()
