@@ -131,7 +131,7 @@ cbar.set_label('probability')
 ax.set_aspect('equal')
 ax.set_xlabel('RA')
 ax.set_ylabel('DEC')
-
+fig_ra_dec.tight_layout()
 ###############################################################################	
 
 container1 = st.container()
