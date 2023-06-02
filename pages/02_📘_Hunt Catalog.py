@@ -14,6 +14,7 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 from oc_tools_padova_edr3 import *
+import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Emily Hunt Catalog",layout='wide', page_icon='📘')
 
@@ -116,14 +117,19 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 
 ###############################################################################	   
 # RA x DEC 
-ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
-                       'DEC': members_ship['dec'], 
-                       'probability':members_ship['probability']})
+# ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
+#                        'DEC': members_ship['dec'], 
+#                        'probability':members_ship['probability']})
 
-fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
-fig.update_layout(coloraxis_colorbar=dict(title="probability"))
+# fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
+# fig.update_layout(coloraxis_colorbar=dict(title="probability"))
 
 
+fig_ra_dec, ax = plt.subplots(figsize=(6, 6))
+scatter = ax.scatter(members_ship['ra'], members_ship['dec'], c=members_ship['probability'], cmap='jet')
+cbar = plt.colorbar(scatter)
+cbar.set_label('probability')
+ax.set_aspect('equal')
 ###############################################################################	
 
 container1 = st.container()
@@ -137,7 +143,8 @@ with container1:
 
     with col2:
         st.caption("Distribution RA and DEC")
-        st.plotly_chart(fig_ra_dec, use_container_width=True)
+        # st.plotly_chart(fig_ra_dec, use_container_width=True)
+        st.pyplot(fig_ra_dec)
         
 st.write('''
 We use the Padova PARSEC version 1.2S database of stellar evolutionary tracks and isochrones 
