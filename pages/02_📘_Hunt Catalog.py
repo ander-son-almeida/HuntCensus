@@ -128,7 +128,7 @@ fig_ra_dec01.update_layout(coloraxis_colorbar=dict(title="probability"))
 
 # fig.update_xaxes(range=[-1,4], constrain="domain")
 fig_ra_dec01.update_yaxes(scaleanchor = "x",scaleratio = 1)
-fig_ra_dec01.update_xaxes(scaleanchor = "x",scaleratio = 1)
+
 
 
 #------------------------------------------------------------------------------
