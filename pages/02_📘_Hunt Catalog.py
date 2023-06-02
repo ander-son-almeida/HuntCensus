@@ -121,7 +121,7 @@ ra_dec = pd.DataFrame({'RA': members_ship['ra'],
                        'probability':members_ship['probability']})
 
 fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
-fig.update_layout(coloraxis_colorbar=dict(title="probability"), width=500, height=500)
+fig.update_layout(coloraxis_colorbar=dict(title="probability"), width=300, height=300)
 
 
 ###############################################################################	
