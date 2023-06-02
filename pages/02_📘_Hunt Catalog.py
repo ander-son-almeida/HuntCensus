@@ -43,6 +43,8 @@ cluster_name = st.sidebar.selectbox(
     "Select open cluster:",
     (list(list_clusters)))
 
+# cluster_name = 'Melotte_22'
+
 #aply filter
 clusters = clusters[clusters['name'] == cluster_name]
 
@@ -125,6 +127,7 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 # fig.update_layout(coloraxis_colorbar=dict(title="probability"))
 
 fig_ra_dec, ax = plt.subplots(figsize=(5, 5))
+members_ship = members_ship.reset_index(drop=True)
 ind = np.argsort(members_ship['probability'])
 scatter = ax.scatter(members_ship['ra'], members_ship['dec'], c=members_ship['probability'], cmap='jet', alpha=0.9)
 cbar = plt.colorbar(scatter)
