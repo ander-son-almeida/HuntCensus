@@ -140,7 +140,7 @@ col1, col2 = st.columns(2)
 with container1:
     
     with col1:
-        st.caption("CMD")
+        # st.caption("CMD")
         st.plotly_chart(fig)
 
     with col2:
