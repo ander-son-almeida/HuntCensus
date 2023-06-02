@@ -16,7 +16,7 @@ import plotly.graph_objects as go
 from oc_tools_padova_edr3 import *
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Emily Hunt Catalog",layout='wide', page_icon='📘')
+st.set_page_config(page_title="Hunt Catalog",layout='wide', page_icon='📘')
 
 st.markdown(
     """
