@@ -100,12 +100,12 @@ fit_iso = make_obs_iso(filters, grid_iso, dist, Av, gaia_ext = True)
 
 members_ship = members_ship.reset_index(drop=True)
 ind = np.argsort(members_ship['probability'])
-members_ship = members_ship[ind]
 
-cor_obs = members_ship['phot_bp_mean_mag']-members_ship['phot_rp_mean_mag']
-absMag_obs = members_ship['phot_g_mean_mag']
 
-cmd_scatter = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_obs, 'probability':members_ship['probability']})
+cor_obs = members_ship['phot_bp_mean_mag'][ind]-members_ship['phot_rp_mean_mag'][ind]
+absMag_obs = members_ship['phot_g_mean_mag'][ind]
+
+cmd_scatter = pd.DataFrame({'G_BPmag - G_RPmag': cor_obs, 'Gmag': absMag_obs, 'probability':members_ship['probability'][ind]})
 
 cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag'], 
                         'Gmag': fit_iso['Gmag']})
@@ -127,9 +127,9 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 # members_ship = members_ship.reset_index(drop=True)
 # ind = np.argsort(members_ship['probability'])
 
-ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
-                        'DEC': members_ship['dec'], 
-                        'probability':members_ship['probability']})
+ra_dec = pd.DataFrame({'RA': members_ship['ra'][ind], 
+                        'DEC': members_ship['dec'][ind], 
+                        'probability':members_ship['probability'][ind]})
 
 fig_ra_dec01 = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.9, color='probability', color_continuous_scale = 'Jet')
 fig_ra_dec01.update_layout(coloraxis_colorbar=dict(title="probability"))
