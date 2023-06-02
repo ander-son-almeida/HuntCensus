@@ -146,7 +146,7 @@ with container1:
     with col2:
         # st.caption("Distribution RA and DEC")
         st.plotly_chart(fig_ra_dec)
-        st.pyplot(fig_ra_dec)
+        # st.pyplot(fig_ra_dec)
         
 st.write('''
 We use the Padova PARSEC version 1.2S database of stellar evolutionary tracks and isochrones 
