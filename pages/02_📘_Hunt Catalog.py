@@ -142,7 +142,7 @@ fig_ra_dec.tight_layout()
 ###############################################################################	
 
 container1 = st.container()
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with container1:
     
@@ -155,10 +155,9 @@ with container1:
         # st.plotly_chart(fig_ra_dec, use_container_width=True)
         st.pyplot(fig_ra_dec)
 
-container2 = st.container()
-col3 = st.columns(1)
-with col3:
-    st.plotly_chart(fig_ra_dec01, use_container_width=True)
+
+    with col3:
+        st.plotly_chart(fig_ra_dec01, use_container_width=True)
 
         
 st.write('''
