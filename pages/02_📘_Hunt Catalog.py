@@ -121,11 +121,12 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 #                         'DEC': members_ship['dec'], 
 #                         'probability':members_ship['probability']})
 
-# fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
+# fig_ra_dec01 = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
 # fig.update_layout(coloraxis_colorbar=dict(title="probability"))
 
 fig_ra_dec, ax = plt.subplots(figsize=(5, 5))
-scatter = ax.scatter(members_ship['ra'], members_ship['dec'], c=members_ship['probability'], cmap='jet', alpha=0.9)
+ind = np.argsort(members_ship['probability'])
+scatter = ax.scatter(members_ship['ra'][ind], members_ship['dec'][ind], c=members_ship['probability'][ind], cmap='jet', alpha=0.9)
 cbar = plt.colorbar(scatter)
 cbar.set_label('probability')
 ax.set_aspect('equal')
@@ -147,6 +148,13 @@ with container1:
         # st.caption("Distribution RA and DEC")
         # st.plotly_chart(fig_ra_dec, use_container_width=True)
         st.pyplot(fig_ra_dec)
+
+# container2 = st.container()
+# col3 = st.columns(1)
+#     with col3:
+#         # st.caption("CMD")
+#         st.plotly_chart(fig, use_container_width=True)
+
         
 st.write('''
 We use the Padova PARSEC version 1.2S database of stellar evolutionary tracks and isochrones 
