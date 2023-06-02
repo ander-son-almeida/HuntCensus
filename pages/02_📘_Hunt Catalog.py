@@ -117,21 +117,21 @@ fig.update_layout(xaxis_title= 'G_BP - G_RP (mag)',
 
 ###############################################################################	   
 # RA x DEC 
-# ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
-#                        'DEC': members_ship['dec'], 
-#                        'probability':members_ship['probability']})
+ra_dec = pd.DataFrame({'RA': members_ship['ra'], 
+                        'DEC': members_ship['dec'], 
+                        'probability':members_ship['probability']})
 
-# fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
-# fig.update_layout(coloraxis_colorbar=dict(title="probability"))
+fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
+fig.update_layout(coloraxis_colorbar=dict(title="probability"))
 
-fig_ra_dec, ax = plt.subplots(figsize=(5, 5))
-scatter = ax.scatter(members_ship['ra'], members_ship['dec'], c=members_ship['probability'], cmap='jet')
-cbar = plt.colorbar(scatter)
-cbar.set_label('probability')
-ax.set_aspect('equal')
-ax.set_xlabel('RA')
-ax.set_ylabel('DEC')
-fig_ra_dec.tight_layout()
+# fig_ra_dec, ax = plt.subplots(figsize=(5, 5))
+# scatter = ax.scatter(members_ship['ra'], members_ship['dec'], c=members_ship['probability'], cmap='jet')
+# cbar = plt.colorbar(scatter)
+# cbar.set_label('probability')
+# ax.set_aspect('equal')
+# ax.set_xlabel('RA')
+# ax.set_ylabel('DEC')
+# fig_ra_dec.tight_layout()
 ###############################################################################	
 
 container1 = st.container()
@@ -144,8 +144,8 @@ with container1:
         st.plotly_chart(fig)
 
     with col2:
-        st.caption("Distribution RA and DEC")
-        # st.plotly_chart(fig_ra_dec, use_container_width=True)
+        # st.caption("Distribution RA and DEC")
+        st.plotly_chart(fig_ra_dec)
         st.pyplot(fig_ra_dec)
         
 st.write('''
