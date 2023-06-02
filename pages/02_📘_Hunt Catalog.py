@@ -104,7 +104,7 @@ cmd_iso = pd.DataFrame({'G_BPmag - G_RPmag': fit_iso['G_BPmag']-fit_iso['G_RPmag
                         'Gmag': fit_iso['Gmag']})
 
 fig1 = px.scatter(cmd_scatter, x = 'G_BPmag - G_RPmag', y = 'Gmag',
-                  opacity=0.5, color='probability', color_continuous_scale = 'inferno')
+                  opacity=0.5, color='probability', color_continuous_scale = 'Jet')
 
 fig2 = px.line(cmd_iso, x = 'G_BPmag - G_RPmag', y = 'Gmag', color_discrete_sequence=['red'])
 
@@ -120,7 +120,7 @@ ra_dec = pd.DataFrame({'RA': members_ship['ra'],
                        'DEC': members_ship['dec'], 
                        'probability':members_ship['probability']})
 
-fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'inferno')
+fig_ra_dec = px.scatter(ra_dec, x = 'RA', y = 'DEC', opacity=0.5, color='probability', color_continuous_scale = 'Jet')
 fig.update_layout(coloraxis_colorbar=dict(title="probability"))
 
 
