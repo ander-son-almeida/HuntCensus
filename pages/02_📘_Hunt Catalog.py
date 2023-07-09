@@ -15,6 +15,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from oc_tools_padova_edr3 import *
 import matplotlib.pyplot as plt
+import io
 
 st.set_page_config(page_title="Hunt Catalog",layout='wide', page_icon='📘')
 
@@ -72,6 +73,18 @@ parallax = clusters['parallax'].iloc[0] #parallax
 parallax_error = clusters['parallax_error'].iloc[0] # parallax_error
 radial_velocity = clusters['radial_velocity'].iloc[0] # radial_velocity
 radial_velocity_error = clusters['radial_velocity_error'].iloc[0] # radial_velocity_error
+
+# Create an in-memory buffer
+with io.BytesIO() as buffer:
+    # Write array to buffer
+    pd.to_parquet(buffer, members_ship)
+    btn = st.sidebar.download_button(
+        label="Download",
+        data = buffer, # Download buffer
+        file_name = '{}.parquet'.format(cluster_name)
+    ) 
+
+st.sidebar.info('Download the .paquet file of the open cluster')
 
 
 # bar with fundamental parameters
