@@ -77,7 +77,7 @@ radial_velocity_error = clusters['radial_velocity_error'].iloc[0] # radial_veloc
 # Create an in-memory buffer
 with io.BytesIO() as buffer:
     # Write array to buffer
-    members_ship.to_parquet(buffer)
+    members_ship.reset_index(drop=True).to_parquet(buffer)
     btn = st.sidebar.download_button(
         label="Download",
         data = buffer, # Download buffer
