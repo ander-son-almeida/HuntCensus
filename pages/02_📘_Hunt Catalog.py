@@ -32,7 +32,15 @@ st.markdown(
 
 ###############################################################################
 #load clusters
-clusters = pd.read_parquet('data/parquet/clusters.parquet')
+try:
+    clusters = pd.read_parquet('data/parquet/clusters.parquet')
+except Exception as e:
+    import pyarrow as pa
+    if isinstance(e, pa.lib.ArrowInvalid):
+        st.error("Error reading parquet files. It looks like you haven't downloaded the Git LFS files. Please run `git lfs pull` to download the actual data files.")
+        st.stop()
+    else:
+        raise e
 
 #select only open clusters
 mask_oc = clusters['kind'] == 'o'

@@ -78,7 +78,15 @@ st.sidebar.subheader(r"$FeH = {} \pm {}$".format(FeH_our[0],e_FeH_our[0]))
 ###############################################################################
 
 #load clusters
-clustersEmily = pd.read_parquet('data/parquet/clusters.parquet')
+try:
+    clustersEmily = pd.read_parquet('data/parquet/clusters.parquet')
+except Exception as e:
+    import pyarrow as pa
+    if isinstance(e, pa.lib.ArrowInvalid):
+        st.error("Error reading parquet files. It looks like you haven't downloaded the Git LFS files. Please run `git lfs pull` to download the actual data files.")
+        st.stop()
+    else:
+        raise e
 
 #select only open clusters
 mask_oc = clustersEmily['kind'] == 'o'
