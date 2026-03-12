@@ -67,10 +67,10 @@ Av_our = cluster_our['Av'][ind]
 e_Av_our = cluster_our['e_Av'][ind]
 
 st.sidebar.subheader("Our Fundamental parameters:")
-st.sidebar.subheader("$log(age) = {} \pm {}$".format(age_our[0], e_age_our[0]))
-st.sidebar.subheader("$Dist. = {} \pm {}~(kpc)$".format(dist_our[0],e_dist_our[0]))
-st.sidebar.subheader("$Av. = {} \pm {}~(mag)$".format(Av_our[0],e_Av_our[0]))
-st.sidebar.subheader("$FeH = {} \pm {}$".format(FeH_our[0],e_FeH_our[0]))
+st.sidebar.subheader(r"$log(age) = {} \pm {}$".format(age_our[0], e_age_our[0]))
+st.sidebar.subheader(r"$Dist. = {} \pm {}~(kpc)$".format(dist_our[0],e_dist_our[0]))
+st.sidebar.subheader(r"$Av. = {} \pm {}~(mag)$".format(Av_our[0],e_Av_our[0]))
+st.sidebar.subheader(r"$FeH = {} \pm {}$".format(FeH_our[0],e_FeH_our[0]))
 
 
 ###############################################################################
