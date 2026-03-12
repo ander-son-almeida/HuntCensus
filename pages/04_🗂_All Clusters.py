@@ -21,7 +21,15 @@ import matplotlib.pyplot as plt
 cluster01 = np.genfromtxt('data/log-results-eDR3.txt', delimiter=';', names = True, 
                         dtype=None, encoding=None, autostrip=True)
 
-cluster02 = pd.read_parquet('data/parquet/clusters.parquet')
+try:
+    cluster02 = pd.read_parquet('data/parquet/clusters.parquet')
+except Exception as e:
+    import pyarrow as pa
+    if isinstance(e, pa.lib.ArrowInvalid):
+        st.error("Error reading parquet files. It looks like you haven't downloaded the Git LFS files. Please run `git lfs pull` to download the actual data files.")
+        st.stop()
+    else:
+        raise e
 cluster02 = cluster02.to_records()
 
 ab, a_ind, b_ind = np.intersect1d(cluster01['name'],cluster02['name'], 
